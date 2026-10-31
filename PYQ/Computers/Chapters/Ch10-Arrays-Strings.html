@@ -1,0 +1,704 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="pyq-slides" content="16"><meta name="pyq-marks" content="112">
+<title>ISC Computer Science, Unit 10: Arrays, Strings – previous-year questions</title><style>
+.fr{display:inline-block; vertical-align:middle; text-align:center; font-size:.92em;
+    margin:0 .16em; line-height:1.22}
+.fr .n{display:block; border-bottom:1px solid currentColor; padding:0 .26em}
+.fr .d{display:block; padding:0 .26em}
+.rt{white-space:nowrap}
+.rt .bar{border-top:1px solid currentColor; padding:0 .14em 0 .05em; margin-left:-.03em}
+.rt .ridx{font-size:.6em; margin-right:-.25em}
+.ig{display:inline-flex; align-items:center; vertical-align:middle; gap:.06em}
+.ig .sym{font-size:1.9em; line-height:.85}
+.ig .lim{display:inline-flex; flex-direction:column; font-size:.72em; line-height:1.15;
+         margin:0 .15em 0 -.05em}
+.ig .hi{margin-bottom:1.1em}
+.ig .lo{margin-top:0}
+.mx{position:relative; display:inline-grid; vertical-align:middle; justify-items:center;
+    gap:.16em .7em; padding:.3em .5em; margin:0 .16em; font-size:.94em; line-height:1.2}
+.mx::before,.mx::after{content:""; position:absolute; top:0; bottom:0; width:.3em;
+                       border:1.5px solid currentColor}
+.mx::before{left:0; border-right:none}
+.mx::after{right:0; border-left:none}
+.mx.det::before,.mx.det::after{width:0; border-top:none; border-bottom:none}
+.mx.det::before{border-right:none}
+.mx.det::after{border-left:1.5px solid currentColor; border-right:none}
+.pw{display:inline-flex; align-items:center; vertical-align:middle; gap:.3em; margin:0 .1em}
+.pw .brace{font-size:2.3em; line-height:.75; font-weight:200}
+.pw .cases{display:inline-grid; grid-template-columns:auto auto; gap:.12em .9em;
+           font-size:.94em; line-height:1.25; text-align:left}
+.lm{display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle;
+    line-height:1.05; margin:0 .1em}
+.lm .op{font-size:.95em}
+.lm .to{font-size:.66em}
+.vec{position:relative; display:inline-block; padding-top:.18em}
+.vec::before{content:"\2192"; position:absolute; top:-.55em; left:0; right:0;
+             text-align:center; font-size:.8em}
+sup,sub{font-size:.72em; line-height:0}
+.disp{text-align:center; margin:.45em 0}
+.tw{overflow-x:auto; margin:.5em 0}
+table{border-collapse:collapse}
+td,th{border:1px solid #999; padding:.25em .55em; vertical-align:top}
+th{background:#f0f0f0}
+table.plain td{border:none}
+pre.code{font-family:"DejaVu Sans Mono",monospace; font-size:.86em; line-height:1.4;
+         background:#f7f7f5; border:1px solid #ddd; padding:.6em .8em; overflow-x:auto;
+         white-space:pre; margin:.5em 0}
+svg{max-width:100%; height:auto}
+figure{margin:.6em auto; text-align:center}
+figcaption{font-size:.85em; font-style:italic}
+
+:root{--bg:#EEF1F6;--surface:#fff;--surface2:#F6F8FC;--ink:#151B26;--muted:#5A6577;--rule:#D5DCE7;
+  --accent:#2A4B8D;--accent-soft:#DFE7F6;--accent-ink:#1D3667;--warm:#8A5A12;--warm-soft:#FBF0DC;
+  --ok:#186B45;--ok-soft:#DDF0E6;--danger:#B0402F;--danger-soft:#F8E4E0;
+  --shadow:0 1px 2px rgba(21,27,38,.05),0 10px 28px -20px rgba(21,27,38,.4);
+  --serif:Charter,"Bitstream Charter",Cambria,Georgia,"Times New Roman",serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);padding-bottom:4.6rem}
+button{font:inherit;cursor:pointer}
+kbd{font:.78em ui-monospace,Menlo,Consolas,monospace;background:#fff;border:1px solid var(--rule);
+    border-bottom-width:2px;border-radius:4px;padding:0 .35em}
+.muted{color:var(--muted)}
+#deck{max-width:1180px;margin:0 auto;padding:.8rem 16px 1rem}
+.slide{display:none}
+.slide.on{display:block}
+.crumb{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--warm);font-weight:650;margin:.2rem 0 .6rem}
+.crumb .src{color:var(--muted);text-transform:none;letter-spacing:0;font-weight:500}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 19.5rem;gap:1.1rem;align-items:start}
+.recall{position:sticky;top:.8rem;background:var(--warm-soft);border:1px solid color-mix(in srgb,var(--warm) 30%,transparent);
+  border-radius:12px;padding:.8rem 1rem;font-size:.9rem;box-shadow:var(--shadow)}
+.recall h3{margin:0 0 .4rem;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--warm)}
+.recall ul{margin:0;padding-left:1.1rem}.recall li{margin:.35rem 0}
+.qcard,.sol,.panel{background:var(--surface);border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow)}
+.qcard{padding:1rem 1.2rem}
+.qhead{display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem}
+.qno{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--accent-ink)}
+.chip{background:var(--accent-soft);color:var(--accent-ink);border-radius:99px;padding:.05rem .65rem;font-size:.82rem;font-weight:650}
+.qbody p{margin:.4rem 0}
+.qbody{font-family:var(--serif);font-size:1.05rem}
+.opts{display:grid;gap:.3rem;margin:.6rem 0 .2rem;font-family:var(--serif);font-size:1.03rem}
+.opt{display:grid;grid-template-columns:2.2em 1fr;padding:.15rem .5rem;border-radius:7px;border:1px solid transparent}
+.ol{color:var(--muted)}
+.shown .opt.right,body.allsol .opt.right{background:var(--ok-soft);border-color:var(--ok);font-weight:600}
+.orbar{text-align:center;font-weight:700;letter-spacing:.3em;color:var(--muted);margin:.9rem 0 .5rem;
+  border-top:1px dashed var(--rule-strong,#A3AFC2);padding-top:.7rem}
+.qfig,.solfig{text-align:center;margin:.6rem 0}
+figure.fg{margin:.4rem auto;text-align:center}
+figure.fg svg{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:2px}
+figcaption{font-size:.82rem;color:var(--muted);font-style:italic;margin-top:.2rem}
+.actions{display:flex;gap:.6rem;margin:.8rem 0}
+.sbtn{background:var(--accent);color:#fff;border:0;border-radius:9px;padding:.5rem 1.1rem;font-weight:650}
+.sbtn:hover{background:var(--accent-ink)}
+.dbtn{background:#fff;color:var(--ink);border:1px solid var(--rule);border-radius:9px;padding:.5rem .9rem}
+.slide.done .dbtn{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);font-weight:650}
+.sol{display:none;padding:1rem 1.2rem;border-top:4px solid var(--ok)}
+.shown .sol,body.allsol .sol{display:block}
+.solh{margin:.8rem 0 .2rem;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.solh:first-child{margin-top:0}
+ol.steps2{list-style:none;margin:.2rem 0;padding:0}
+.st{display:grid;grid-template-columns:minmax(0,1fr) 3.4em;gap:.6rem;padding:.38rem 0;border-bottom:1px dotted var(--rule)}
+.st .sm{text-align:right;font-weight:700;color:var(--accent);white-space:nowrap;font-family:var(--serif)}
+.st.nm .sx{color:var(--ink);font-weight:650}
+.st .sx p{margin:.2rem 0}
+.ansbox{margin:.8rem 0 .3rem;border:2px solid var(--ok);background:var(--ok-soft);border-radius:9px;padding:.45rem .8rem}
+.lab{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.ansbox .lab{color:var(--ok)}
+.slip{margin:.6rem 0;background:var(--danger-soft);border-left:4px solid var(--danger);padding:.4rem .8rem;border-radius:0 8px 8px 0;font-size:.93rem}
+.slip .lab{color:var(--danger)}
+.mnote{margin:.6rem 0;background:var(--surface2);border-left:4px solid var(--accent);padding:.4rem .8rem;border-radius:0 8px 8px 0;font-size:.93rem}
+.mnote .lab{color:var(--accent)}
+.disp{text-align:center;margin:.4em 0}
+.panel{padding:.9rem 1.2rem;margin:1rem 0}.panel h2{font-size:.95rem;margin:0 0 .4rem;color:var(--warm)}
+.panel li{margin:.2rem 0}
+.cover .coverin{max-width:52rem;margin:1.2rem auto}
+.kicker{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--warm);font-weight:650;margin:0}
+h1{font-family:var(--serif);font-size:clamp(1.6rem,4.4vw,2.3rem);line-height:1.18;margin:.4rem 0 .8rem;color:var(--accent-ink)}
+.statrow{display:flex;flex-wrap:wrap;gap:.5rem}
+.stat{background:var(--surface);border:1px solid var(--rule);border-radius:9px;padding:.45rem .8rem}
+.stat b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--accent)}
+.stat span{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.badge{display:inline-block;background:var(--ok-soft);color:var(--ok);border-radius:99px;padding:.15rem .8rem;font-size:.82rem;font-weight:650}
+/* bottom bar */
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#fffffff2;border-top:1px solid var(--rule);
+  padding:.45rem 12px calc(.45rem + env(safe-area-inset-bottom,0px));backdrop-filter:blur(6px)}
+#bar .in{max-width:1180px;margin:0 auto;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+#bar button,#bar select{border:1px solid var(--rule);background:#fff;border-radius:8px;padding:.35rem .8rem;color:var(--ink)}
+#bar #nextb{background:var(--accent);color:#fff;border-color:var(--accent)}
+#bar select{max-width:15rem}
+#counter{font-size:.85rem;color:var(--muted);min-width:5.5rem;text-align:center}
+#prog{flex:1;height:5px;background:var(--rule);border-radius:9px;min-width:4rem;overflow:hidden}
+#prog i{display:block;height:100%;width:0;background:var(--accent)}
+#tally{font-size:.8rem;color:var(--muted)}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.recall{position:static}
+  #deck{padding-left:10px;padding-right:10px}#prog{display:none}}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:#fff;padding:0;font-size:11pt}
+  #bar{display:none}
+  .slide,.slide.on{display:block;break-after:page;animation:none;opacity:1}
+  .sol,.shown .sol{display:block}.opt.right{background:var(--ok-soft);border-color:var(--ok)}
+  .grid{grid-template-columns:1fr 17rem}.recall{position:static}
+  .qcard,.sol,.recall,.panel{box-shadow:none}.actions{display:none}
+  .cover{break-after:page}
+}
+
+.chnote{font-size:.82rem;color:#8A5A12;background:#FBF0DC;border-radius:6px;padding:.25rem .6rem;margin:0 0 .5rem}
+.chnote.topic{color:#234;background:#E6EEF8}
+.freq{border-collapse:collapse;width:100%;font-size:.88rem;margin:.4rem 0}
+.freq th,.freq td{border:1px solid var(--rule);padding:.3rem .5rem;text-align:center}
+.freq th{background:var(--surface2)}.freq td.l,.freq th.l{text-align:left}.freq tr.tot td{font-weight:bold;background:var(--surface2)}
+.freq td.z{color:#aaa}.fwrap{overflow-x:auto}
+.cnav{display:flex;justify-content:space-between;gap:1rem;margin-top:.8rem;font-size:.9rem}
+:root{--accent:#3B4F9A;--accent-ink:#3B4F9A}
+</style></head><body>
+<div id="deck"><section class="slide cover" id="q0" data-i="0"><div class="coverin"><p class="kicker">ISC Computer Science &middot; chapter-wise previous-year questions</p><h1>Unit 10: Arrays, Strings</h1><div class="statrow"><div class="stat"><b>16</b><span>question entries</span></div><div class="stat"><b>104</b><span>marks set in 5 papers</span></div><div class="stat"><b>5 / 5</b><span>papers with this unit</span></div><div class="stat"><b>20.8</b><span>average marks set a paper</span></div></div><p class="badge">Board 2024, 2025, 2025 Improvement, 2026 and CISCE Specimen 2025 &middot; same worked solutions as the paper-wise decks. Specimen 2026 and 2027 are not held locally, so they are not here.</p><div class="panel"><h2>How often it was set</h2><div class="fwrap"><table class="freq"><thead><tr><th>&nbsp;</th><th>Board 2024</th><th>Board 2025</th><th>Board 2025 Imp.</th><th>Board 2026</th><th>Specimen 2025</th><th>Total</th></tr></thead><tbody><tr><td class="l">Marks set (of 95)</td><td class="">22</td><td class="">22</td><td class="">25</td><td class="">12</td><td class="">23</td><td><b>104</b></td></tr><tr><td class="l">Question entries</td><td class="">3</td><td class="">3</td><td class="">4</td><td class="">2</td><td class="">4</td><td><b>16</b></td></tr><tr><td class="l">1-mark questions</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="">1</td><td>1</td></tr><tr><td class="l">2-mark questions</td><td class="">1</td><td class="">1</td><td class="">1</td><td class="z">&ndash;</td><td class="">1</td><td>4</td></tr><tr><td class="l">3-mark questions</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="">1</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td>1</td></tr><tr><td class="l">10-mark questions</td><td class="">2</td><td class="">2</td><td class="">2</td><td class="">2</td><td class="">2</td><td>10</td></tr></tbody></table></div><p class="muted" style="font-size:.85rem">Syllabus: ISC 2027 Computer Science Paper 1, unit 10 (Part II Section B). Each paper sets 95 marks (Part I 20 + Part II 75); a candidate answers 70, taking two of three questions in each Part II section, so the table counts <b>marks set</b>, not marks attempted. 1 question(s) here are mixed: they also contain parts from other units, shown with the full solution and a note at the top.</p></div><div class="panel"><h2>What to revise</h2><ul><li><b>Question 2(ii) in every paper:</b> address of an element of a 2-D array in row-major or column-major order (base address, element size, bounds not starting at 0) &ndash; 2 marks, always the same method: address = B + w &times; [(i &minus; L1) &times; columns + (j &minus; L2)] for row major.</li><li><b>Section B programs:</b> string handling (Coding, Flipgram, Palprime, PendulumS, mask removal) and arrays or matrices (InsSort insertion sort, Colsum, JoinArray, Mixarray). A method-by-method specification is given; follow the names exactly.</li><li><b>Other:</b> a string function to complete with ?1?, ?2?, ?3? (getPart, 2025 Improvement), String immutability (specimen 2025 Q1(vii)).</li><li><b>Habit:</b> check index limits and the empty-array or one-character case.</li></ul></div><div class="panel"><h2>Contents</h2><ul><b>ONE-MARK QUESTIONS (1)</b></li><li><b>TWO-MARK QUESTIONS (4)</b></li><li><b>THREE-MARK QUESTIONS (1)</b></li><li><b>TEN-MARK QUESTIONS (10)</b></ul></div><div class="panel keys"><h2>How to use it</h2><p>One question to a slide, grouped by marks, newest paper first; the tag at the top right names the paper and question. Think first, then press <kbd>S</kbd> or <i>Show solution</i>. <b>Concepts to recall</b> sits beside the question. <kbd>&larr;</kbd> <kbd>&rarr;</kbd> or <kbd>space</kbd> move, <kbd>D</kbd> marks done, <kbd>Home</kbd>/<kbd>End</kbd> jump, and the menu at the foot jumps to any question.</p><div class="cnav"><span><a href="Ch09-Methods.html">&larr; Ch 9 Methods</a></span><span><a href="Ch11-Recursion.html">Ch 11 Recursion &rarr;</a></span></div></div></div></section><section class="slide" id="q1" data-i="1" data-sec="ONE-MARK QUESTIONS (1)"><div class="crumb"><span>ONE-MARK QUESTIONS (1)</span><span class="src">ISC Specimen 2025 Computer Science Paper 1, Q1(vii)</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 1(vii) &middot; Specimen 2025</span><span class="chip">[1]</span></div><div class="qbody">Assertion: In Java, the String class is used to create and manipulate strings, and it is immutable.<br>Reason: Immutability ensures that once a String object is created, its value cannot be changed.</div><div class="opts"><div class="opt right"><span class="ol">(a)</span><span>Both Assertion and Reason are true and Reason is the correct explanation for Assertion.</span></div><div class="opt"><span class="ol">(b)</span><span>Both Assertion and Reason are true but Reason is not the correct explanation for Assertion.</span></div><div class="opt"><span class="ol">(c)</span><span>Assertion is true and Reason is false.</span></div><div class="opt"><span class="ol">(d)</span><span>Assertion is false and Reason is true.</span></div></div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Assertion: String objects cannot be altered after creation; methods such as <code>toUpperCase()</code> or <code>concat()</code> return a new String. True.</div><div class="sm">[½]</div></li><li class="st"><div class="sx">Reason: this is exactly what immutability means, and it explains the Assertion's claim. True and the correct explanation.</div><div class="sm">[½]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>(a) Both Assertion and Reason are true and Reason is the correct explanation for Assertion.</div></div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>A String is immutable: <code>s.concat("x")</code> leaves <code>s</code> unchanged; the result must be assigned. StringBuffer/StringBuilder are the mutable alternatives.</li><li>When the Reason is simply the definition of the term in the Assertion, it is the explanation.</li></ul></aside></div></section><section class="slide" id="q2" data-i="2" data-sec="TWO-MARK QUESTIONS (4)"><div class="crumb"><span>TWO-MARK QUESTIONS (4)</span><span class="src">ISC 2025 Improvement Computer Science Paper 1 (868A), Q2(ii)</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 2(ii) &middot; Board 2025 Imp.</span><span class="chip">[2]</span></div><div class="qbody">A matrix P[&minus;10&hellip;10, 1&hellip;10] is stored in the memory with each element requiring 2 bytes of storage. If the base address is 2000, find the address of P[5][6] when the matrix is stored Row Major wise.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Rows = 10 &minus; (&minus;10) + 1 = 21, columns = 10 &minus; 1 + 1 = 10, w = 2, lower bounds L<sub>r</sub> = &minus;10, L<sub>c</sub> = 1, base B = 2000.</div><div class="sm">[½]</div></li><li class="st"><div class="sx">Row major: address of P[i][j] = B + w &times; [(i &minus; L<sub>r</sub>) &times; C + (j &minus; L<sub>c</sub>)], C = number of columns.</div><div class="sm">[½]</div></li><li class="st"><div class="sx">P[5][6] = 2000 + 2 &times; [(5 + 10) &times; 10 + (6 &minus; 1)] = 2000 + 2 &times; 155</div><div class="sm">[½]</div></li><li class="st"><div class="sx">= 2000 + 310 = <b>2310</b></div><div class="sm">[½]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Address of P[5][6] = 2310</div></div><div class="slip"><span class="lab">Common slip</span> Using (5 &minus; 10) or taking 20 rows (10 + 10); the lower bound &minus;10 gives 21 rows and an offset of 15 rows above P[5].</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Row major: row by row, so row offset = (i &minus; L<sub>r</sub>) &times; (columns) and column offset = (j &minus; L<sub>c</sub>).</li><li>Column major: B + w[(j &minus; L<sub>c</sub>) &times; R + (i &minus; L<sub>r</sub>)], R = number of rows.</li><li>Number of rows/columns with bounds l..u is u &minus; l + 1 (negative lower bound adds, it does not subtract).</li></ul></aside></div></section><section class="slide" id="q3" data-i="3" data-sec="TWO-MARK QUESTIONS (4)"><div class="crumb"><span>TWO-MARK QUESTIONS (4)</span><span class="src">ISC 2025 Computer Science Paper 1 (868A), Q2(ii)</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 2(ii) &middot; Board 2025</span><span class="chip">[2]</span></div><div class="qbody">A matrix M[&minus;1 &hellip; 10, 4 &hellip; 13] is stored in the memory with each element requiring 2 bytes of storage. If the base address is 1200, find the address of M[2][7] when the matrix is stored Row Major Wise.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Rows = 10 &minus; (&minus;1) + 1 = 12; columns = 13 &minus; 4 + 1 = 10 (the number of columns is what a row-major address needs). Formula: Address = B + w[(i &minus; L<sub>r</sub>)&times;C + (j &minus; L<sub>c</sub>)].</div><div class="sm">[1]</div></li><li class="st"><div class="sx">Address of M[2][7] = 1200 + 2[(2 &minus; (&minus;1))&times;10 + (7 &minus; 4)] = 1200 + 2[30 + 3] = 1200 + 66 = <b>1266</b>.</div><div class="sm">[1]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Address of M[2][7] = 1266</div></div><div class="slip"><span class="lab">Common slip</span> Using (i &minus; 0) and (j &minus; 0) because the matrix looks like a normal array; with negative and non-zero lower bounds the offsets must be measured from L<sub>r</sub> and L<sub>c</sub>.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Row major: elements of one row are consecutive; Addr(i,j) = B + w[(i &minus; L<sub>r</sub>)&times;C + (j &minus; L<sub>c</sub>)] where C = number of columns = U<sub>c</sub> &minus; L<sub>c</sub> + 1.</li><li>Column major uses the number of rows: B + w[(j &minus; L<sub>c</sub>)&times;R + (i &minus; L<sub>r</sub>)].</li><li>The base address is that of the first element M[&minus;1][4].</li></ul></aside></div></section><section class="slide" id="q4" data-i="4" data-sec="TWO-MARK QUESTIONS (4)"><div class="crumb"><span>TWO-MARK QUESTIONS (4)</span><span class="src">ISC Specimen 2025 Computer Science Paper 1, Q2(ii)</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 2(ii) &middot; Specimen 2025</span><span class="chip">[2]</span></div><div class="qbody">A matrix M[&minus;6 &hellip; 10, 4 &hellip; 15] is stored in the memory with each element requiring 4 bytes of storage. If the base address is 1025, find the address of M[4][8] when the matrix is stored column major wise.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Column major: address of M[I][J] = B + W &times; [(J &minus; LC) &times; R + (I &minus; LR)], R = number of rows.</div><div class="sm">[½]</div></li><li class="st"><div class="sx">Rows = 10 &minus; (&minus;6) + 1 = 17; columns = 15 &minus; 4 + 1 = 12. B = 1025, W = 4, LR = &minus;6, LC = 4, I = 4, J = 8.</div><div class="sm">[½]</div></li><li class="st"><div class="sx">Address = 1025 + 4 &times; [(8 &minus; 4) &times; 17 + (4 &minus; (&minus;6))] = 1025 + 4 &times; (68 + 10) = 1025 + 4 &times; 78 = 1025 + 312</div><div class="sm">[½]</div></li><li class="st"><div class="sx">= 1337</div><div class="sm">[½]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Address of M[4][8] = <b>1337</b></div></div><div class="slip"><span class="lab">Common slip</span> Using columns (12) instead of rows (17) as the multiplier, which is the row-major formula.</div><div class="mnote"><span class="lab">Marking note</span> The base address 1025 is taken as the address of M[&minus;6][4], the first element.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Row major: B + W[(I &minus; LR) &times; C + (J &minus; LC)] (C = columns). Column major: B + W[(J &minus; LC) &times; R + (I &minus; LR)] (R = rows).</li><li>Number of elements in a dimension = upper &minus; lower + 1; with a negative lower bound, I &minus; LR adds.</li><li>Columns before column J are skipped whole (R elements each); then count the rows down inside the column.</li></ul></aside></div></section><section class="slide" id="q5" data-i="5" data-sec="TWO-MARK QUESTIONS (4)"><div class="crumb"><span>TWO-MARK QUESTIONS (4)</span><span class="src">ISC 2024 Computer Science Paper 1 (868A), Q2(ii)</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 2(ii) &middot; Board 2024</span><span class="chip">[2]</span></div><div class="qbody">An array ARR [ &minus;5 &hellip;&hellip; 15, 10 &hellip;&hellip; 20 ] stores elements in Row Major Wise with each element requiring 2 bytes of storage. Find the address of ARR [10] [15] when the base address is 2500.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Rows = 15 &minus; (&minus;5) + 1 = 21; columns <i>n</i> = 20 &minus; 10 + 1 = 11. Row major: Address of A[i][j] = B + w [ (i &minus; L<sub>r</sub>) &times; n + (j &minus; L<sub>c</sub>) ]</div><div class="sm">[1]</div></li><li class="st"><div class="sx">= 2500 + 2 [ (10 &minus; (&minus;5)) &times; 11 + (15 &minus; 10) ]</div><div class="sm">[½]</div></li><li class="st"><div class="sx">= 2500 + 2 [ 15 &times; 11 + 5 ] = 2500 + 2 &times; 170 = <b>2840</b></div><div class="sm">[½]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Address of ARR[10][15] = 2840</div></div><div class="slip"><span class="lab">Common slip</span> Using n = 20 &minus; 10 = 10 columns (forgetting the +1), or taking 10 &minus; 5 = 5 for the row offset.</div><div class="mnote"><span class="lab">Marking note</span> The base address is that of the first element ARR[&minus;5][10] (no other cell is quoted).</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Row major: Address = B + w[(i &minus; L<sub>r</sub>) &times; N<sub>c</sub> + (j &minus; L<sub>c</sub>)], where N<sub>c</sub> = number of columns = U<sub>c</sub> &minus; L<sub>c</sub> + 1.</li><li>Column major: B + w[(j &minus; L<sub>c</sub>) &times; N<sub>r</sub> + (i &minus; L<sub>r</sub>)].</li><li>With a negative lower bound, i &minus; L<sub>r</sub> = 10 &minus; (&minus;5) = 15: subtracting a negative adds.</li></ul></aside></div></section><section class="slide" id="q6" data-i="6" data-sec="THREE-MARK QUESTIONS (1)"><div class="crumb"><span>THREE-MARK QUESTIONS (1)</span><span class="src">ISC 2025 Improvement Computer Science Paper 1 (868A), Q2(iv)</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 2(iv) &middot; Board 2025 Imp.</span><span class="chip">[3]</span></div><div class="qbody">The following function getPart() is a part of some class which is used to extract h number of characters starting from index b of a string str. There are some places in the code marked by ?1?, ?2?, ?3? which must be replaced by an expression / statement so that the function works correctly.<pre class="code java">String getPart(String str, int b, int h)
+{
+    int beg = ?1?;
+    int end = b + h - 1;
+    String g = &quot;&quot;;
+    while (beg &lt;= ?2? &amp;&amp; beg &gt;= 0 &amp;&amp; end &lt; str.length())
+    {
+        g += str.charAt(beg);
+        ?3?;
+    }
+    return g;
+}</pre>(a) What is the expression or statement at ?1? [1]<br>(b) &hellip; at ?2? [1]<br>(c) &hellip; at ?3? [1]</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx"><b>(a)</b> ?1? : <code>b</code> &mdash; extraction starts at index b.</div><div class="sm">[1]</div></li><li class="st"><div class="sx"><b>(b)</b> ?2? : <code>end</code> &mdash; the last index to be taken is end = b + h &minus; 1, so the loop runs while beg &le; end.</div><div class="sm">[1]</div></li><li class="st"><div class="sx"><b>(c)</b> ?3? : <code>beg++</code> (or <code>beg = beg + 1</code>) &mdash; advance to the next character; without it the loop never ends.</div><div class="sm">[1]</div></li><li class="st nm"><div class="sx">Check: getPart("COMPUTER", 2, 4) gives beg = 2, end = 5, characters at 2..5 = <b>MPUT</b>. If end would run past the string (getPart("COMPUTER", 6, 4), end = 9) the condition end &lt; str.length() is false and "" is returned.</div><div class="sm"></div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>?1? = b &nbsp; ?2? = end &nbsp; ?3? = beg++</div></div><div class="mnote"><span class="lab">Marking note</span> Program with the blanks filled was compiled and run: prints [MPUT] and []. Accept <code>beg = beg + 1</code> or <code>++beg</code> for ?3?.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>A substring of h characters from index b occupies indexes b to b + h &minus; 1.</li><li>Loop-completion questions: identify the initial value, the loop condition and the update of the control variable.</li><li><code>charAt(i)</code> is valid only for 0 &le; i &lt; length(), which the two other conditions guard.</li></ul></aside></div></section><section class="slide" id="q7" data-i="7" data-sec="TEN-MARK QUESTIONS (10)"><div class="crumb"><span>TEN-MARK QUESTIONS (10)</span><span class="src">ISC 2026 Computer Science Paper 1 (868A), Q2</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 2 &middot; Board 2026</span><span class="chip">[10]</span></div><div class="qbody"><div class="chnote"><b>Mixed question.</b> The part(s) counted in this chapter: (ii) address of an element of a 2-D array, column major &mdash; 2 of the question&rsquo;s 10 marks. The other parts are in Ch 13, Ch 11, Ch 3; the full solution is shown unchanged.</div><b>(i)</b> Convert the following <i>infix</i> notation to <i>prefix</i> form: <b>P / Q + ( S * F + X / R )</b> [2]<br><b>(ii)</b> A matrix G[3&hellip;7, 2&hellip;5] is stored in the memory, with each element requiring 4 bytes of storage. If the address of G[5][4] is 6000, find the <b>base address</b> when the matrix is stored <b>Column Major Wise</b>. [2]<br><b>(iii)</b> The following function <b>workOut( )</b> is a part of some class. Assume &lsquo;n&rsquo; is a positive integer.<pre class="code java">String workOut(int n)
+{   if(n == 0)
+        return &quot;&quot;;
+    int rem = n % 16;
+    char cr = (rem &lt; 10) ? (char)(rem + &#x27;0&#x27;) : (char)(rem - 10 + &#x27;A&#x27;);
+    return workOut(n / 16) + cr;
+}</pre>Answer with the dry run / working: (a) What will the function workOut(220) return? [2] (b) What is the function workOut( ) performing apart from recursion? [1]<br><b>(iv)</b> The function <b>isTech( )</b> checks whether a number is a Tech number (the count of digits is even and the square of the sum of its two equal halves equals the number itself, e.g. 2025 = 20 + 25 = (45)<sup>2</sup>). Places marked ?1?, ?2?, ?3? are to be filled. [3]<pre class="code java">boolean isTech(int n)
+{
+    String s = String.valueOf(n);
+    int len = ?1?;
+    if (len % 2 != 0)
+        return ?2?;
+    int first = Integer.parseInt(s.substring(0, len / 2));
+    int second = Integer.parseInt(s.substring(len / 2));
+    int sum = first + second;
+    return ?3? == n;
+}</pre>What are the expressions or statements at ?1?, ?2? and ?3??</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st nm"><div class="sx"><b>(i) Infix to prefix, P / Q + ( S * F + X / R )</b></div><div class="sm"></div></li><li class="st"><div class="sx">Priority: brackets first, then * and /, then +. Inside the bracket: S*F = <b>*SF</b>, X/R = <b>/XR</b>; the bracket is then (*SF) + (/XR) = <b>+*SF/XR</b>. Outside: P/Q = <b>/PQ</b>.</div><div class="sm">[1]</div></li><li class="st"><div class="sx">Final operator +: <b>+ /PQ +*SF/XR</b> = <b>+/PQ+*SF/XR</b></div><div class="sm">[1]</div></li><li class="st nm"><div class="sx"><b>(ii) Column-major address of G[3&hellip;7, 2&hellip;5]</b></div><div class="sm"></div></li><li class="st"><div class="sx">Number of rows NR = 7 &minus; 3 + 1 = 5; columns NC = 5 &minus; 2 + 1 = 4; w = 4. Column major: Address of G[i][j] = B + w[(j &minus; LC)&times;NR + (i &minus; LR)]. Here LR = 3, LC = 2.</div><div class="sm">[1]</div></li><li class="st"><div class="sx">6000 = B + 4[(4 &minus; 2)&times;5 + (5 &minus; 3)] = B + 4 &times; 12 = B + 48, so <b>B = 5952</b></div><div class="sm">[1]</div></li><li class="st nm"><div class="sx"><b>(iii)(a) workOut(220): dry run</b></div><div class="sm"></div></li><li class="st"><div class="sx"><div class="tw"><table class=""><thead><tr><th>call</th><th>n</th><th>rem = n % 16</th><th>cr</th><th>returns</th></tr></thead><tbody><tr><td>workOut(220)</td><td>220</td><td>12</td><td>'C' (12 &minus; 10 + 'A')</td><td>workOut(13) + &lsquo;C&rsquo; = &ldquo;DC&rdquo;</td></tr><tr><td>workOut(13)</td><td>13</td><td>13</td><td>'D'</td><td>workOut(0) + &lsquo;D&rsquo; = &ldquo;D&rdquo;</td></tr><tr><td>workOut(0)</td><td>0</td><td>&mdash;</td><td>&mdash;</td><td>&ldquo;&rdquo; (base case)</td></tr></tbody></table></div></div><div class="sm">[1]</div></li><li class="st"><div class="sx">Returns are built from the base case outwards: ""&nbsp;+&nbsp;D&nbsp;+&nbsp;C. <b>workOut(220) returns &ldquo;DC&rdquo;.</b></div><div class="sm">[1]</div></li><li class="st"><div class="sx"><b>(b)</b> Apart from recursion it converts a decimal number to its <b>hexadecimal</b> equivalent (remainders on dividing by 16, digits 10&ndash;15 written as A&ndash;F, read in reverse order); 220<sub>10</sub> = DC<sub>16</sub>.</div><div class="sm">[1]</div></li><li class="st nm"><div class="sx"><b>(iv) isTech( )</b></div><div class="sm"></div></li><li class="st"><div class="sx">?1? : <code>s.length()</code> (count of digits of n, held as the string s)</div><div class="sm">[1]</div></li><li class="st"><div class="sx">?2? : <code>false</code> (an odd number of digits cannot be split into two equal halves)</div><div class="sm">[1]</div></li><li class="st"><div class="sx">?3? : <code>sum * sum</code>   (or (int)Math.pow(sum, 2)): the square of the sum of the two halves; checked on 2025, 3025, 9801 (true) and 1234, 135 (false).</div><div class="sm">[1]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>(i) +/PQ+*SF/XR &nbsp;(ii) B = 5952 &nbsp;(iii) DC; decimal to hexadecimal &nbsp;(iv) s.length(); false; sum * sum</div></div><div class="slip"><span class="lab">Common slip</span> In (ii) using row-major offsets, or taking 6000 as the base address itself. In (iii) writing the digits in the wrong order (CD).</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Infix to prefix: scan by priority (brackets, then * /, then + -); write each operator before its two operands. Prefix has no brackets.</li><li>Column-major: Address = B + w[(j &minus; LC)&times;NR + (i &minus; LR)]; row-major swaps the roles: B + w[(i &minus; LR)&times;NC + (j &minus; LC)]. NR = UR &minus; LR + 1.</li><li>Recursion dry run: write each call with its rem and returned value, then combine from the base case outwards. Remainders 10&ndash;15 give A&ndash;F.</li><li>A number n with d digits: s.length() gives d; for &ldquo;equal halves&rdquo; d must be even.</li></ul></aside></div></section><section class="slide" id="q8" data-i="8" data-sec="TEN-MARK QUESTIONS (10)"><div class="crumb"><span>TEN-MARK QUESTIONS (10)</span><span class="src">ISC 2026 Computer Science Paper 1 (868A), Q8</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 8 &middot; Board 2026</span><span class="chip">[10]</span></div><div class="qbody">Design a class <b>PendulumS</b> to perform an operation on a word containing alphabets in upper case only. Rearrange the word by putting the lowest ASCII value character at the centre and the second lowest ASCII value character to its right and the third to its left and so on. Example 1: Input COMPUTER, Output TPMCEORU. Example 2: Input SCIENCE, Output SIECCEN.<div class="tw"><table class="plain spec"><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">Class name</td><td style="border:none">: PendulumS</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Data members</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">wrd</td><td style="border:none">: to store the original word</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">newwrd</td><td style="border:none">: to store the rearranged word</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Methods</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">PendulumS(String k)</td><td style="border:none">: parameterised constructor to initialise wrd = k and newwrd = ""</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">int minCharIndex(String str)</td><td style="border:none">: to find the index of the minimum ASCII value character in str and return it</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void arrange( )</td><td style="border:none">: to rearrange the characters of wrd as per the given instructions and store it in newwrd by invoking minCharIndex( )</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void display( )</td><td style="border:none">: to display the original word and the rearranged word</td></tr></table></div>Specify the class giving the details of the constructor( ), int minCharIndex(String), void arrange( ) and void display( ). Define the main( ) function to create an object and call the functions accordingly. [10]</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Class header, data members; constructor <code>wrd = k; newwrd = "";</code></div><div class="sm">[1]</div></li><li class="st"><div class="sx"><code>minCharIndex(str)</code>: assume index 0 is smallest, compare each character, return the index of the smallest</div><div class="sm">[2]</div></li><li class="st"><div class="sx"><code>arrange()</code>: repeat n times &ndash; find the smallest remaining letter with minCharIndex(), remove it from the remaining string</div><div class="sm">[1½]</div></li><li class="st"><div class="sx">Centre position c = (n &minus; 1)/2; first (lowest) letter at c; 2nd, 4th, &hellip; at c+1, c+2, &hellip; (right); 3rd, 5th, &hellip; at c&minus;1, c&minus;2, &hellip; (left)</div><div class="sm">[2]</div></li><li class="st"><div class="sx">Build the rearranged String from the char array and store in newwrd</div><div class="sm">[½]</div></li><li class="st"><div class="sx"><code>display()</code>: print wrd and newwrd</div><div class="sm">[1]</div></li><li class="st"><div class="sx"><code>main()</code>: accept the word, create the object, call arrange() and display()</div><div class="sm">[2]</div></li><li class="st nm"><div class="sx"><b>Working for COMPUTER:</b> sorted order C, E, M, O, P, R, T, U; n = 8, centre index 3: positions 3 4 2 5 1 6 0 7 receive C E M O P R T U &rArr; T P M C E O R U.</div><div class="sm"></div></li><li class="st nm"><div class="sx"><div style="font-weight:400"><b>Program</b> (run: COMPUTER gives TPMCEORU, SCIENCE gives SIECCEN, plus one-, two- and four-letter words):<pre class="code java">import java.util.*;
+class PendulumS
+{
+    String wrd, newwrd;
+
+    PendulumS(String k)
+    {
+        wrd = k;
+        newwrd = &quot;&quot;;
+    }
+
+    int minCharIndex(String str)            // index of the smallest ASCII character
+    {
+        int idx = 0;
+        for (int i = 1; i &lt; str.length(); i++)
+            if (str.charAt(i) &lt; str.charAt(idx))
+                idx = i;
+        return idx;
+    }
+
+    void arrange()
+    {
+        int n = wrd.length();
+        char res[] = new char[n];
+        String rest = wrd;                  // letters not yet placed
+        int c = (n - 1) / 2;                // centre position
+        int l = c, r = c;                   // last position used on the left / right
+        for (int k = 0; k &lt; n; k++)
+        {
+            int i = minCharIndex(rest);
+            char ch = rest.charAt(i);
+            rest = rest.substring(0, i) + rest.substring(i + 1);   // remove it
+            if (k == 0)
+                res[c] = ch;                // lowest goes to the centre
+            else if (k % 2 == 1)
+                res[++r] = ch;              // 2nd, 4th, ... to the right
+            else
+                res[--l] = ch;              // 3rd, 5th, ... to the left
+        }
+        newwrd = new String(res);
+    }
+
+    void display()
+    {
+        System.out.println(&quot;Original word : &quot; + wrd);
+        System.out.println(&quot;Rearranged word : &quot; + newwrd);
+    }
+
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print(&quot;Enter a word in upper case: &quot;);
+        PendulumS ob = new PendulumS(sc.next());
+        ob.arrange();
+        ob.display();
+    }
+}</pre></div></div><div class="sm"></div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>COMPUTER &rarr; TPMCEORU; SCIENCE &rarr; SIECCEN (program above).</div></div><div class="slip"><span class="lab">Common slip</span> Using the middle index n/2 for even length (gives UPMC&hellip; instead of TPMC&hellip;), or placing the second lowest on the left.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Find the minimum: keep the index of the smallest so far; compare characters with &lt; (their ASCII values are compared).</li><li>Remove the character at index i: <code>s.substring(0,i) + s.substring(i+1)</code>. Strings are immutable, so build a new one.</li><li>Pendulum pattern: centre, then alternately right and left. Even length: centre = (n&minus;1)/2 means the left half is one shorter than the right half.</li><li>Repeated letters (SCIENCE has two C and two E) cause no problem: the first occurrence is taken each time.</li></ul></aside></div></section><section class="slide" id="q9" data-i="9" data-sec="TEN-MARK QUESTIONS (10)"><div class="crumb"><span>TEN-MARK QUESTIONS (10)</span><span class="src">ISC 2025 Improvement Computer Science Paper 1 (868A), Q7</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 7 &middot; Board 2025 Imp.</span><span class="chip">[10]</span></div><div class="qbody"><div class="chnote">Also draws on: builds a new array from two arrays.</div>A class JoinArray contains an array of integer elements. Form a new array which will contain elements of the second array from last index to first index followed by elements of the first array from last index to first index.<br>Example: Array1 = {9, 7, 6, 4}, Array2 = {8, 3, 2, 1}; resultant array = {1, 2, 3, 8, 4, 6, 7, 9}.<div class="tw"><table class="plain spec"><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">Class name</td><td style="border:none">: JoinArray</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Data members / instance variables</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">arr[ ]</td><td style="border:none">: integer array</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">size</td><td style="border:none">: integer to store the size of the array</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Member functions / methods</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">JoinArray(int s)</td><td style="border:none">: constructor to initialise size</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void accept()</td><td style="border:none">: to input the elements of the array</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">JoinArray attach(JoinArray P, JoinArray Q)</td><td style="border:none">: to return the resultant array after combining arrays of objects P and Q as per the description above</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void display()</td><td style="border:none">: to display the array elements</td></tr></table></div>Specify the class JoinArray giving details of the constructor(int), void accept(), JoinArray attach(JoinArray, JoinArray) and void display(). Define the main() function to create objects and call the functions accordingly to enable the task.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Class header, data members</div><div class="sm">[1]</div></li><li class="st"><div class="sx">Constructor JoinArray(int s): size = s and arr = new int[size]</div><div class="sm">[1]</div></li><li class="st"><div class="sx">accept(): loop to input the elements</div><div class="sm">[1]</div></li><li class="st"><div class="sx">attach(): new object of size P.size + Q.size</div><div class="sm">[1]</div></li><li class="st"><div class="sx">attach(): second array copied from last index to first</div><div class="sm">[2]</div></li><li class="st"><div class="sx">attach(): then first array copied from last index to first; result returned</div><div class="sm">[2]</div></li><li class="st"><div class="sx">display() and main(): objects created, accept, attach, display</div><div class="sm">[2]</div></li><li class="st nm"><div class="sx"><pre class="code java">import java.util.*;
+class JoinArray
+{
+    static Scanner sc = new Scanner(System.in);   // one scanner shared by accept() and main()
+    int arr[];                               // the elements
+    int size;                                // number of elements
+
+    JoinArray(int s)
+    {
+        size = s;
+        arr = new int[size];
+    }
+
+    void accept()
+    {
+        System.out.println(&quot;Enter &quot; + size + &quot; elements : &quot;);
+        for (int i = 0; i &lt; size; i++)
+            arr[i] = sc.nextInt();
+    }
+
+    JoinArray attach(JoinArray P, JoinArray Q)
+    {
+        JoinArray R = new JoinArray(P.size + Q.size);
+        int k = 0;
+        for (int i = Q.size - 1; i &gt;= 0; i--)    // second array, last index to first
+            R.arr[k++] = Q.arr[i];
+        for (int i = P.size - 1; i &gt;= 0; i--)    // then the first array, last index to first
+            R.arr[k++] = P.arr[i];
+        return R;
+    }
+
+    void display()
+    {
+        for (int i = 0; i &lt; size; i++)
+            System.out.print(arr[i] + &quot; &quot;);
+        System.out.println();
+    }
+
+    public static void main(String args[])
+    {
+        System.out.print(&quot;Size of first array : &quot;);
+        int n1 = sc.nextInt();
+        System.out.print(&quot;Size of second array : &quot;);
+        int n2 = sc.nextInt();
+        JoinArray a = new JoinArray(n1);
+        JoinArray b = new JoinArray(n2);
+        a.accept();
+        b.accept();
+        JoinArray r = new JoinArray(n1 + n2);
+        r = r.attach(a, b);
+        System.out.println(&quot;Resultant array : &quot;);
+        r.display();
+    }
+}</pre></div><div class="sm"></div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Program above; for {9, 7, 6, 4} and {8, 3, 2, 1} it prints 1 2 3 8 4 6 7 9</div></div><div class="slip"><span class="lab">Common slip</span> Sizing the result array with s from this object (which is unrelated to P and Q) instead of P.size + Q.size.</div><div class="mnote"><span class="lab">Marking note</span> Compiled and run with the paper&rsquo;s example and a second case of unequal sizes. attach() may be written so that it uses the current object as one of the arrays provided the described order is kept.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Reversing while copying: loop i from size &minus; 1 down to 0 and write into the next free index k++.</li><li>A method may create and return an object of its own class; the new array must be as long as both arrays together.</li><li>Arrays of objects P and Q are reached through the dot operator: P.arr[i], Q.size.</li></ul></aside></div></section><section class="slide" id="q10" data-i="10" data-sec="TEN-MARK QUESTIONS (10)"><div class="crumb"><span>TEN-MARK QUESTIONS (10)</span><span class="src">ISC 2025 Improvement Computer Science Paper 1 (868A), Q8</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 8 &middot; Board 2025 Imp.</span><span class="chip">[10]</span></div><div class="qbody">A class Palprime has been defined to display Palprime words from a sentence. Palprime is a palindrome word and its length is a prime number.<br>Example: Input: MY MOM POSSESSES A GOOD LEVEL OF KNOWLEDGE IN MALAYALAM &nbsp; Output: MOM, LEVEL<div class="tw"><table class="plain spec"><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">Class name</td><td style="border:none">: Palprime</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Data member / instance variable</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">line</td><td style="border:none">: to store a sentence</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Methods / member functions</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">Palprime()</td><td style="border:none">: constructor to initialise data member</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void input()</td><td style="border:none">: to accept the sentence in UPPER CASE</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">boolean isPalin(String n)</td><td style="border:none">: to check whether the string n is a palindrome word and return true, otherwise return false</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">boolean primelen(String n)</td><td style="border:none">: to find the length of the string and to check for prime and return true if the length is a prime number otherwise return false</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void display()</td><td style="border:none">: to display the palprime word(s) from the sentence by invoking isPalin() and primelen()</td></tr></table></div>Specify the class Palprime giving details of the constructor(), void input(), boolean isPalin(String), boolean primelen(String) and void display(). Define a main() function to create an object and call the member functions accordingly to enable the task.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Class header, data member, constructor</div><div class="sm">[1]</div></li><li class="st"><div class="sx">input(): accept the sentence</div><div class="sm">[1]</div></li><li class="st"><div class="sx">isPalin(): compare characters from both ends</div><div class="sm">[2]</div></li><li class="st"><div class="sx">primelen(): length, prime test (length 1 is not prime)</div><div class="sm">[2]</div></li><li class="st"><div class="sx">display(): split into words (StringTokenizer or charAt scan)</div><div class="sm">[2]</div></li><li class="st"><div class="sx">display(): invoking isPalin() and primelen() and printing the qualifying words</div><div class="sm">[1]</div></li><li class="st"><div class="sx">main(): object created and methods called</div><div class="sm">[1]</div></li><li class="st nm"><div class="sx"><pre class="code java">import java.util.*;
+class Palprime
+{
+    String line;
+
+    Palprime()
+    {
+        line = &quot;&quot;;
+    }
+
+    void input()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;Enter a sentence in UPPER CASE : &quot;);
+        line = sc.nextLine();
+    }
+
+    boolean isPalin(String n)                // palindrome word ?
+    {
+        int i = 0, j = n.length() - 1;
+        while (i &lt; j)
+        {
+            if (n.charAt(i) != n.charAt(j))
+                return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+
+    boolean primelen(String n)               // is the length a prime number ?
+    {
+        int len = n.length();
+        if (len &lt; 2)
+            return false;
+        for (int d = 2; d * d &lt;= len; d++)
+            if (len % d == 0)
+                return false;
+        return true;
+    }
+
+    void display()
+    {
+        StringTokenizer st = new StringTokenizer(line);
+        boolean first = true;
+        while (st.hasMoreTokens())
+        {
+            String w = st.nextToken();
+            if (isPalin(w) &amp;&amp; primelen(w))
+            {
+                if (!first)
+                    System.out.print(&quot;, &quot;);
+                System.out.print(w);
+                first = false;
+            }
+        }
+        System.out.println();
+    }
+
+    public static void main(String args[])
+    {
+        Palprime ob = new Palprime();
+        ob.input();
+        ob.display();
+    }
+}</pre></div><div class="sm"></div></li><li class="st nm"><div class="sx">Check on the example: MOM (3, prime), LEVEL (5, prime) qualify; POSSESSES (9 letters, not a palindrome), A (length 1), MALAYALAM (9, not prime) do not.</div><div class="sm"></div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Program above; the example prints MOM, LEVEL</div></div><div class="slip"><span class="lab">Common slip</span> Treating one-letter words (A, I) as prime-length palindromes: length 1 is not prime.</div><div class="mnote"><span class="lab">Marking note</span> Compiled and run with the example (MOM, LEVEL) and with ABA OTTO POP (ABA, POP: OTTO has length 4). Output format with commas is as in the paper; a plain list is accepted.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Palindrome word: reads the same from both ends; compare charAt(i) with charAt(length &minus; 1 &minus; i).</li><li>Prime test: no divisor from 2 up to &radic;n; 0 and 1 are not prime.</li><li>StringTokenizer splits a sentence into words at spaces (hasMoreTokens / nextToken).</li></ul></aside></div></section><section class="slide" id="q11" data-i="11" data-sec="TEN-MARK QUESTIONS (10)"><div class="crumb"><span>TEN-MARK QUESTIONS (10)</span><span class="src">ISC 2025 Computer Science Paper 1 (868A), Q7</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 7 &middot; Board 2025</span><span class="chip">[10]</span></div><div class="qbody">Design a class <b>Colsum</b> to check if the sum of elements in each corresponding column of two matrices is equal or not. Assume that the two matrices have the same dimensions. Example: MATRIX A = [2 3 1; 7 5 6; 1 4 2], MATRIX B = [7 4 2; 1 3 1; 2 5 6]. Output: Sum of corresponding columns is equal.<br>Data members: <code>int mat[][]</code>, <code>m</code> rows, <code>n</code> columns. Methods: <code>Colsum(int mm, int nn)</code> parameterised constructor (m = mm, n = nn); <code>void readArray()</code>; <code>boolean check(Colsum A, Colsum B)</code> to check if the sum of elements in each column of the objects A and B is equal and return true, otherwise false; <code>void print()</code>. Specify the class and define the main() function to create objects and call the functions.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx"><b>Class, data members and constructor</b> (the array is created in the constructor, once its size is known)<pre class="code java">import java.util.*;
+class Colsum
+{
+    int mat[][];                  // the array
+    int m, n;                     // rows and columns
+    static Scanner sc = new Scanner(System.in);   // one scanner shared by all objects
+    Colsum(int mm, int nn)
+    {
+        m = mm;
+        n = nn;
+        mat = new int[m][n];
+    }
+    ...
+}</pre></div><div class="sm">[2]</div></li><li class="st"><div class="sx"><b>readArray()</b><pre class="code java">void readArray()
+{
+    for (int i = 0; i &lt; m; i++)
+        for (int j = 0; j &lt; n; j++)
+            mat[i][j] = sc.nextInt();
+}</pre></div><div class="sm">[1½]</div></li><li class="st"><div class="sx"><b>check(Colsum A, Colsum B)</b>: for each column, add up the column of A and of B, compare, return false at the first mismatch<pre class="code java">boolean check(Colsum A, Colsum B)
+{
+    for (int j = 0; j &lt; A.n; j++)         // one column at a time
+    {
+        int sumA = 0, sumB = 0;
+        for (int i = 0; i &lt; A.m; i++)
+        {
+            sumA = sumA + A.mat[i][j];
+            sumB = sumB + B.mat[i][j];
+        }
+        if (sumA != sumB)                 // a single unequal column is enough
+            return false;
+    }
+    return true;
+}</pre></div><div class="sm">[3]</div></li><li class="st"><div class="sx"><b>print()</b><pre class="code java">void print()
+{
+    for (int i = 0; i &lt; m; i++)
+    {
+        for (int j = 0; j &lt; n; j++)
+            System.out.print(mat[i][j] + &quot;\t&quot;);
+        System.out.println();
+    }
+}</pre></div><div class="sm">[1]</div></li><li class="st"><div class="sx"><b>main()</b><pre class="code java">public static void main(String args[])
+{
+    System.out.print(&quot;Rows and columns: &quot;);
+    int r = sc.nextInt(), c = sc.nextInt();
+    Colsum A = new Colsum(r, c);
+    Colsum B = new Colsum(r, c);
+    System.out.println(&quot;Enter matrix A&quot;);
+    A.readArray();
+    System.out.println(&quot;Enter matrix B&quot;);
+    B.readArray();
+    A.print();
+    B.print();
+    if (A.check(A, B))
+        System.out.println(&quot;Sum of corresponding columns is equal.&quot;);
+    else
+        System.out.println(&quot;Sum of corresponding columns is not equal.&quot;);
+}</pre></div><div class="sm">[2½]</div></li></ol><div class="solfig"><div class="tw"><table class=""><thead><tr><th></th><th>col 1</th><th>col 2</th><th>col 3</th></tr></thead><tbody><tr><td>A</td><td>2+7+1 = 10</td><td>3+5+4 = 12</td><td>1+6+2 = 9</td></tr><tr><td>B</td><td>7+1+2 = 10</td><td>4+3+5 = 12</td><td>2+1+6 = 9</td></tr></tbody></table></div></div><div class="ansbox"><span class="lab">Answer</span><div>Program as given; for the example every column sum matches (10, 12, 9) and it prints &ldquo;Sum of corresponding columns is equal.&rdquo;</div></div><div class="slip"><span class="lab">Common slip</span> Looping rows outside and columns inside gives row sums, not column sums.</div><div class="mnote"><span class="lab">Marking note</span> Compiled and run on the example and on a pair of matrices with unequal column sums.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Column-wise traversal: outer loop on the column j, inner loop on the rows i: <code>mat[i][j]</code>.</li><li>An object can reach the private-by-default members of another object of its own class (A.mat, B.mat).</li><li>Early return: one unequal column is enough to answer false; true only after all columns have passed.</li></ul></aside></div></section><section class="slide" id="q12" data-i="12" data-sec="TEN-MARK QUESTIONS (10)"><div class="crumb"><span>TEN-MARK QUESTIONS (10)</span><span class="src">ISC 2025 Computer Science Paper 1 (868A), Q8</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 8 &middot; Board 2025</span><span class="chip">[10]</span></div><div class="qbody">A class <b>Flipgram</b> has been defined to flip the letters of the left and right halves of a non-heterogram word. If the word has an odd number of characters, the middle letter remains at its own position. A heterogram is a word where no letter appears more than once. Examples: BETTER &rarr; TERBET; NEVER &rarr; ERVNE; THAN &rarr; HETEROGRAM.<br>Data member <code>word</code>. Methods: <code>Flipgram(String s)</code> (word = s); <code>boolean ishetero()</code> true if word is a heterogram; <code>String flip()</code> interchange the left and right sides of a non-heterogram word and return the resultant word; <code>void display()</code> print the flipped word for a non-heterogram, an appropriate message for a heterogram (by invoking flip()). Specify the class and define a main() function.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx"><b>Class, data member and constructor</b><pre class="code java">class Flipgram
+{
+    String word;                  // the word
+    Flipgram(String s)
+    {
+        word = s;
+    }
+    ...
+}</pre></div><div class="sm">[1]</div></li><li class="st"><div class="sx"><b>ishetero()</b>: compare every letter with every later letter; a repeat means not a heterogram<pre class="code java">boolean ishetero()
+{
+    String w = word.toUpperCase();
+    for (int i = 0; i &lt; w.length(); i++)
+        for (int j = i + 1; j &lt; w.length(); j++)
+            if (w.charAt(i) == w.charAt(j))       // a repeated letter
+                return false;
+    return true;
+}</pre></div><div class="sm">[2½]</div></li><li class="st"><div class="sx"><b>flip()</b>: half = length / 2; result = right half + (middle letter if the length is odd) + left half<pre class="code java">String flip()
+{
+    int len = word.length();
+    int h = len / 2;                              // length of each half
+    String left = word.substring(0, h);
+    String right = word.substring(len - h);
+    String middle = &quot;&quot;;
+    if (len % 2 == 1)                             // odd length: middle letter stays
+        middle = word.substring(h, h + 1);
+    return right + middle + left;
+}</pre></div><div class="sm">[3]</div></li><li class="st"><div class="sx"><b>display()</b>: the heterogram message or the flipped word (calling flip())<pre class="code java">void display()
+{
+    if (ishetero())
+        System.out.println(&quot;HETEROGRAM&quot;);
+    else
+        System.out.println(flip());
+}</pre></div><div class="sm">[1½]</div></li><li class="st"><div class="sx"><b>main()</b><pre class="code java">public static void main(String args[])
+{
+    java.util.Scanner sc = new java.util.Scanner(System.in);
+    System.out.print(&quot;Enter a word: &quot;);
+    String s = sc.next();
+    Flipgram ob = new Flipgram(s);
+    ob.display();
+}</pre></div><div class="sm">[2]</div></li></ol><div class="solfig"><div class="tw"><table class=""><thead><tr><th>Word</th><th>Left</th><th>Middle</th><th>Right</th><th>flip()</th></tr></thead><tbody><tr><td>BETTER</td><td>BET</td><td></td><td>TER</td><td>TER + BET = TERBET</td></tr><tr><td>NEVER</td><td>NE</td><td>V</td><td>ER</td><td>ER + V + NE = ERVNE</td></tr><tr><td>THAN</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>heterogram &rarr; HETEROGRAM</td></tr></tbody></table></div></div><div class="ansbox"><span class="lab">Answer</span><div>Program as given; BETTER &rarr; TERBET, NEVER &rarr; ERVNE, THAN &rarr; HETEROGRAM.</div></div><div class="mnote"><span class="lab">Marking note</span> Compiled and run on the three examples and on ABBA (not a heterogram, flips to BAAB). The check is case-insensitive in this answer.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li><code>substring(0, h)</code> is the left half and <code>substring(len - h)</code> the right half for h = len / 2; for odd length the middle is <code>substring(h, h+1)</code>.</li><li>Heterogram test: compare each letter with all later letters (nested loop), or use a frequency array of 26.</li><li>Strings are immutable: build the result by concatenation.</li></ul></aside></div></section><section class="slide" id="q13" data-i="13" data-sec="TEN-MARK QUESTIONS (10)"><div class="crumb"><span>TEN-MARK QUESTIONS (10)</span><span class="src">ISC Specimen 2025 Computer Science Paper 1, Q6</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 6 &middot; Specimen 2025</span><span class="chip">[10]</span></div><div class="qbody">Given two strings, an input string and a mask string, remove all the characters of the mask string from the original string. Example: ORIGINAL STRING: communication, MASK STRING: mont, OUTPUT: cuicai.<br>Class <b>StringOp</b>: data members: str (original string), msk (mask string), nstr (resultant string). Methods: <code>StringOp()</code> default constructor; <code>void accept()</code> accepts str and msk in lower case; <code>void form()</code> forms nstr after removing from str the characters present in msk; <code>void display()</code> displays the original and the new string. Specify the class, with a main() that creates an object and calls the methods.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st nm"><div class="sx">Complete program:<pre class="code java">import java.util.*;
+class StringOp
+{
+    String str;     // original string
+    String msk;     // mask string
+    String nstr;    // resultant string
+    StringOp()
+    {
+        str = &quot;&quot;;
+        msk = &quot;&quot;;
+        nstr = &quot;&quot;;
+    }
+    void accept()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print(&quot;Enter the original string : &quot;);
+        str = sc.nextLine().toLowerCase();
+        System.out.print(&quot;Enter the mask string : &quot;);
+        msk = sc.nextLine().toLowerCase();
+    }
+    void form()
+    {
+        nstr = &quot;&quot;;
+        for (int i = 0; i &lt; str.length(); i++)
+        {
+            char ch = str.charAt(i);
+            if (msk.indexOf(ch) == -1)      // keep only characters absent from the mask
+                nstr = nstr + ch;
+        }
+    }
+    void display()
+    {
+        System.out.println(&quot;Original string : &quot; + str);
+        System.out.println(&quot;New string      : &quot; + nstr);
+    }
+    public static void main(String args[])
+    {
+        StringOp ob = new StringOp();
+        ob.accept();
+        ob.form();
+        ob.display();
+    }
+}</pre></div><div class="sm"></div></li><li class="st"><div class="sx">Class header and the three data members</div><div class="sm">[1]</div></li><li class="st"><div class="sx">Constructor initialises all three strings to "" (legal initial values)</div><div class="sm">[1]</div></li><li class="st"><div class="sx">accept(): reads both strings (nextLine, in lower case)</div><div class="sm">[2]</div></li><li class="st"><div class="sx">form(): loop over every character of str; <code>msk.indexOf(ch) == -1</code> test; append to nstr</div><div class="sm">[4]</div></li><li class="st"><div class="sx">display(): prints the original and the new string</div><div class="sm">[1]</div></li><li class="st"><div class="sx">main(): creates the object and calls accept(), form(), display() in order</div><div class="sm">[1]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>For "communication" and mask "mont" the program prints <b>cuicai</b>.</div></div><div class="slip"><span class="lab">Common slip</span> Removing only the first occurrence of each mask letter, or comparing str with msk character by character in the same position.</div><div class="mnote"><span class="lab">Marking note</span> The CISCE key reads the string with <code>str=sc.next()+sc.nextLine()</code>, computes unused variables and relies on a main() without arguments; the version here reads the line directly. Run for communication / mont: output cuicai.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li><code>indexOf(ch)</code> returns &minus;1 if the character does not occur in the string: a one-line membership test.</li><li>Build the result by concatenation: <code>nstr = nstr + ch</code>; a String is immutable so the new value must be assigned.</li><li>ISC programs: meaningful names, comments, default constructor, a main() that exercises every method; no flowchart or algorithm required.</li></ul></aside></div></section><section class="slide" id="q14" data-i="14" data-sec="TEN-MARK QUESTIONS (10)"><div class="crumb"><span>TEN-MARK QUESTIONS (10)</span><span class="src">ISC Specimen 2025 Computer Science Paper 1, Q7</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 7 &middot; Specimen 2025</span><span class="chip">[10]</span></div><div class="qbody">A class <b>Mixarray</b> contains an array of integer elements along with its capacity (3 or more). Form a new array that contains only the first 3 elements of each of two different arrays, one after another. Example: Array1 {78, 90, 100, 45, 67}, Array2 {10, 67, 200, 90}: resultant {78, 90, 100, 10, 67, 200}.<br>Members: <code>arr[]</code> integer array; <code>cap</code> capacity. Methods: <code>Mixarray(int mm)</code> sets cap = mm; <code>void input()</code> accepts the elements; <code>Mixarray mix(Mixarray P, Mixarray Q)</code> returns the array of the first 3 elements of P and of Q; <code>void display()</code> displays the array with a message. Specify the class with main().</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st nm"><div class="sx">Complete program:<pre class="code java">import java.util.*;
+class Mixarray
+{
+    int arr[];
+    int cap;
+    static Scanner sc = new Scanner(System.in);
+    Mixarray(int mm)
+    {
+        cap = mm;
+        arr = new int[cap];
+    }
+    void input()
+    {
+        System.out.println(&quot;Enter &quot; + cap + &quot; elements&quot;);
+        for (int i = 0; i &lt; cap; i++)
+            arr[i] = sc.nextInt();
+    }
+    Mixarray mix(Mixarray P, Mixarray Q)
+    {
+        Mixarray R = new Mixarray(6);
+        int k = 0;
+        for (int i = 0; i &lt; 3; i++)         // first 3 of P
+            R.arr[k++] = P.arr[i];
+        for (int i = 0; i &lt; 3; i++)         // first 3 of Q
+            R.arr[k++] = Q.arr[i];
+        return R;
+    }
+    void display()
+    {
+        System.out.print(&quot;Array : &quot;);
+        for (int i = 0; i &lt; cap; i++)
+            System.out.print(arr[i] + &quot; &quot;);
+        System.out.println();
+    }
+    public static void main(String args[])
+    {
+        System.out.print(&quot;Capacity of the two arrays : &quot;);
+        int c1 = sc.nextInt();
+        int c2 = sc.nextInt();
+        Mixarray A = new Mixarray(c1);
+        Mixarray B = new Mixarray(c2);
+        A.input();
+        B.input();
+        Mixarray R = new Mixarray(6);
+        R = R.mix(A, B);
+        R.display();
+    }
+}</pre></div><div class="sm"></div></li><li class="st"><div class="sx">Class header, data members, constructor (cap = mm; arr = new int[cap])</div><div class="sm">[2]</div></li><li class="st"><div class="sx">input(): loop reading cap elements</div><div class="sm">[1]</div></li><li class="st"><div class="sx">mix(): creates a 6-element result object and copies P.arr[0..2], then Q.arr[0..2] using one running index</div><div class="sm">[4]</div></li><li class="st"><div class="sx">display(): prints the elements with a message</div><div class="sm">[1]</div></li><li class="st"><div class="sx">main(): reads capacities, creates P and Q, inputs, calls mix and display</div><div class="sm">[2]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>For {78, 90, 100, 45, 67} and {10, 67, 200, 90} the program prints <b>78 90 100 10 67 200</b>.</div></div><div class="slip"><span class="lab">Common slip</span> Using i for both source and destination index, so the second copy overwrites the first.</div><div class="mnote"><span class="lab">Marking note</span> Run with the paper's example: output 78 90 100 10 67 200.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Objects as arguments and return values: <code>mix(P, Q)</code> receives two Mixarray objects and returns a new one.</li><li>Use one index <code>k</code> that keeps counting while two loops copy from different arrays.</li><li>Use a shared <code>static Scanner</code> so the keyboard is read through a single stream.</li></ul></aside></div></section><section class="slide" id="q15" data-i="15" data-sec="TEN-MARK QUESTIONS (10)"><div class="crumb"><span>TEN-MARK QUESTIONS (10)</span><span class="src">ISC 2024 Computer Science Paper 1 (868A), Q7</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 7 &middot; Board 2024</span><span class="chip">[10]</span></div><div class="qbody">A class InsSort contains an array of integers which sorts the elements in a particular order.<div class="tw"><table class=""><tbody><tr><td>Class name</td><td>: InsSort</td></tr><tr><td>arr[ ]</td><td>: stores the array elements</td></tr><tr><td>size</td><td>: stores the number of elements in the array</td></tr><tr><td>InsSort(int s)</td><td>: constructor to initialise size = s</td></tr><tr><td>void getArray( )</td><td>: accepts the array elements</td></tr><tr><td>void insertionSort( )</td><td>: sorts the elements of the array in descending order using the Insertion Sort technique</td></tr><tr><td>double find( )</td><td>: calculates and returns the average of all the odd numbers in the array</td></tr><tr><td>void display( )</td><td>: displays the elements of the array in a sorted order along with the average of all the odd numbers by invoking find( ) with an appropriate message</td></tr></tbody></table></div>Specify the class InsSort giving details of the constructor( ), getArray( ), insertionSort( ), find( ) and display( ). Define a main( ) function to create an object and call all the functions accordingly.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx"><b>Class header, data members and constructor</b><pre class="code java">import java.util.*;
+public class InsSort
+{
+    int arr[];         // array elements
+    int size;          // number of elements
+    static Scanner in = new Scanner(System.in);   // one keyboard reader for the whole class
+
+    InsSort(int s)
+    {
+        size = s;
+        arr = new int[size];
+    }</pre></div><div class="sm">[1½]</div></li><li class="st"><div class="sx"><b>getArray()</b><pre class="code java">    void getArray()
+    {
+        System.out.println(&quot;Enter &quot; + size + &quot; integers:&quot;);
+        for (int i = 0; i &lt; size; i++)
+            arr[i] = in.nextInt();
+    }</pre></div><div class="sm">[1½]</div></li><li class="st"><div class="sx"><b>insertionSort()</b> &ndash; key picked (1), shifting loop with the descending test (1), key inserted (1)<pre class="code java">    void insertionSort()      // descending order
+    {
+        for (int i = 1; i &lt; size; i++)
+        {
+            int key = arr[i];
+            int j = i - 1;
+            while (j &gt;= 0 &amp;&amp; arr[j] &lt; key)   // shift smaller elements right
+            {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;                // insert key in its place
+        }
+    }</pre></div><div class="sm">[3]</div></li><li class="st"><div class="sx"><b>find()</b> &ndash; selecting odd numbers (1), average as a double (1)<pre class="code java">    double find()
+    {
+        int sum = 0, count = 0;
+        for (int i = 0; i &lt; size; i++)
+            if (arr[i] % 2 != 0)             // odd (also correct for negatives)
+            {
+                sum = sum + arr[i];
+                count++;
+            }
+        if (count == 0)
+            return 0;
+        return (double) sum / count;
+    }</pre></div><div class="sm">[2]</div></li><li class="st"><div class="sx"><b>display()</b><pre class="code java">    void display()
+    {
+        System.out.println(&quot;Sorted array:&quot;);
+        for (int i = 0; i &lt; size; i++)
+            System.out.print(arr[i] + &quot; &quot;);
+        System.out.println();
+        System.out.println(&quot;Average of the odd numbers = &quot; + find());
+    }</pre></div><div class="sm">[1]</div></li><li class="st"><div class="sx"><b>main()</b><pre class="code java">    public static void main(String args[])
+    {
+        System.out.print(&quot;Size of the array: &quot;);
+        InsSort ob = new InsSort(in.nextInt());
+        ob.getArray();
+        ob.insertionSort();
+        ob.display();
+    }
+}</pre></div><div class="sm">[1]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Program above (input 4 7 2 9 3 &rarr; 9 7 4 3 2, average of odd numbers 6.33)</div></div><div class="slip"><span class="lab">Common slip</span> Using integer division for the average, or sorting ascending by leaving the comparison as arr[j] &gt; key.</div><div class="mnote"><span class="lab">Marking note</span> A candidate may sort inside display() or in main(); the task says insertionSort( ) sorts, and display( ) shows the sorted array, so main( ) calls them in that order.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Insertion sort: take element i (the key), shift the larger-to-the-left elements one place, drop the key into the gap. For <b>descending</b> order shift while arr[j] &lt; key.</li><li>Average = sum / count of odd numbers; cast to double to avoid integer division, and guard count = 0.</li><li>Odd test: n % 2 != 0 (n % 2 == 1 fails for negative odd numbers).</li></ul></aside></div></section><section class="slide" id="q16" data-i="16" data-sec="TEN-MARK QUESTIONS (10)"><div class="crumb"><span>TEN-MARK QUESTIONS (10)</span><span class="src">ISC 2024 Computer Science Paper 1 (868A), Q8</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 8 &middot; Board 2024</span><span class="chip">[10]</span></div><div class="qbody">Design a class Coding to perform some string related operations on a word containing alphabets only. Example: Input &ldquo;Java&rdquo; &rarr; Original word: Java; J=74, a=97, v=118, a=97; Lowest ASCII code: 74; Highest ASCII code: 118.<div class="tw"><table class=""><tbody><tr><td>Class name</td><td>: Coding</td></tr><tr><td>wrd</td><td>: stores the word</td></tr><tr><td>len</td><td>: stores the length of the word</td></tr><tr><td>Coding( )</td><td>: constructor to initialise the data members with legal initial values</td></tr><tr><td>void accept( )</td><td>: to accept a word</td></tr><tr><td>void find( )</td><td>: to display all the characters of 'wrd' along with their ASCII codes; also the lowest and the highest ASCII code in 'wrd'</td></tr><tr><td>void show( )</td><td>: to display the original word and all the characters of wrd along with their ASCII codes, the lowest and the highest code, by invoking find( )</td></tr></tbody></table></div>Specify the class Coding giving details of the constructor( ), accept( ), find( ) and show( ). Define a main( ) function to create an object and call all the functions accordingly.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx"><b>Class header, data members and constructor</b><pre class="code java">import java.util.*;
+public class Coding
+{
+    String wrd;      // the word
+    int len;         // its length
+
+    Coding()
+    {
+        wrd = &quot;&quot;;
+        len = 0;
+    }</pre></div><div class="sm">[1½]</div></li><li class="st"><div class="sx"><b>accept()</b><pre class="code java">    void accept()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.print(&quot;Enter a word: &quot;);
+        wrd = in.next();
+        len = wrd.length();
+    }</pre></div><div class="sm">[1]</div></li><li class="st"><div class="sx"><b>find()</b> &ndash; each character with its code (1), code by (int) cast (1), lowest (1), highest (1)<pre class="code java">    void find()
+    {
+        int low = 999, high = 0;
+        for (int i = 0; i &lt; len; i++)
+        {
+            char ch = wrd.charAt(i);
+            int code = (int) ch;                 // ASCII code
+            System.out.println(ch + &quot;=&quot; + code);
+            if (code &lt; low)  low = code;
+            if (code &gt; high) high = code;
+        }
+        System.out.println(&quot;Lowest ASCII code: &quot; + low);
+        System.out.println(&quot;Highest ASCII code: &quot; + high);
+    }</pre></div><div class="sm">[4]</div></li><li class="st"><div class="sx"><b>show()</b><pre class="code java">    void show()
+    {
+        System.out.println(&quot;Original word: &quot; + wrd);
+        find();
+    }</pre></div><div class="sm">[2]</div></li><li class="st"><div class="sx"><b>main()</b><pre class="code java">    public static void main(String args[])
+    {
+        Coding ob = new Coding();
+        ob.accept();
+        ob.show();
+    }
+}</pre></div><div class="sm">[1½]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Program above (Java &rarr; J=74 a=97 v=118 a=97, lowest 74, highest 118)</div></div><div class="slip"><span class="lab">Common slip</span> Printing ch + "=" + code correctly but writing ch + code first (adding the numbers instead of joining text).</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>A char is a number in Java: (int) ch or ch + 0 gives the ASCII/Unicode code (A = 65, a = 97).</li><li>Running minimum/maximum: start low very large and high very small, update inside the loop.</li><li>String methods: length(), charAt(i); Scanner next() reads one word.</li></ul></aside></div></section></div>
+<div id="bar"><div class="in">
+<button id="prevb" type="button">&larr; Prev</button><span id="counter">0 / 16</span>
+<button id="nextb" type="button">Next &rarr;</button>
+<select id="jump" aria-label="Jump to question"><option value="0">Cover</option><optgroup label="ONE-MARK QUESTIONS (1)"><option value="1">Q1(vii) &middot; Specimen 2025 &middot; 1 mk</option></optgroup><optgroup label="TWO-MARK QUESTIONS (4)"><option value="2">Q2(ii) &middot; Board 2025 Imp. &middot; 2 mk</option><option value="3">Q2(ii) &middot; Board 2025 &middot; 2 mk</option><option value="4">Q2(ii) &middot; Specimen 2025 &middot; 2 mk</option><option value="5">Q2(ii) &middot; Board 2024 &middot; 2 mk</option></optgroup><optgroup label="THREE-MARK QUESTIONS (1)"><option value="6">Q2(iv) &middot; Board 2025 Imp. &middot; 3 mk</option></optgroup><optgroup label="TEN-MARK QUESTIONS (10)"><option value="7">Q2 &middot; Board 2026 &middot; 10 mk</option><option value="8">Q8 &middot; Board 2026 &middot; 10 mk</option><option value="9">Q7 &middot; Board 2025 Imp. &middot; 10 mk</option><option value="10">Q8 &middot; Board 2025 Imp. &middot; 10 mk</option><option value="11">Q7 &middot; Board 2025 &middot; 10 mk</option><option value="12">Q8 &middot; Board 2025 &middot; 10 mk</option><option value="13">Q6 &middot; Specimen 2025 &middot; 10 mk</option><option value="14">Q7 &middot; Specimen 2025 &middot; 10 mk</option><option value="15">Q7 &middot; Board 2024 &middot; 10 mk</option><option value="16">Q8 &middot; Board 2024 &middot; 10 mk</option></optgroup></select>
+<div id="prog"><i></i></div>
+<button id="revealAll" type="button">Reveal all</button>
+<span id="tally"></span>
+<a href="index.html" style="font-size:.82rem;color:var(--accent)">All chapters</a>
+</div></div>
+<script>
+(function(){
+  var KEY='isc-pyq-computers-chapter10-v1';
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var N=slides.length-1, cur=0, done={};
+  try{ done=JSON.parse(localStorage.getItem(KEY+'-done')||'{}'); }catch(e){}
+  var counter=document.getElementById('counter'), jump=document.getElementById('jump'),
+      prog=document.querySelector('#prog i'), tally=document.getElementById('tally');
+  function save(){ try{ localStorage.setItem(KEY+'-pos',String(cur)); localStorage.setItem(KEY+'-done',JSON.stringify(done)); }catch(e){} }
+  function doneCount(){ return Object.keys(done).filter(function(k){return done[k];}).length; }
+  function render(){
+    slides.forEach(function(s,i){ s.classList.toggle('on',i===cur); s.classList.toggle('done',!!done[i]); });
+    counter.textContent=cur+' / '+N; jump.value=String(cur);
+    prog.style.width=(100*cur/N)+'%';
+    tally.textContent='done '+doneCount()+'/'+N;
+    var s=slides[cur].querySelector('.sbtn');
+    if(s) s.textContent=slides[cur].classList.contains('shown')?'Hide solution':'Show solution';
+    try{ history.replaceState(null,'','#p'+cur); }catch(e){}
+    save(); window.scrollTo(0,0);
+  }
+  function go(i){ cur=Math.max(0,Math.min(N,i)); render(); }
+  function toggleSol(){ var s=slides[cur]; if(cur>0){ s.classList.toggle('shown'); render2(); } }
+  function render2(){ var s=slides[cur].querySelector('.sbtn');
+    if(s) s.textContent=slides[cur].classList.contains('shown')?'Hide solution':'Show solution'; }
+  function toggleDone(){ if(cur>0){ done[cur]=!done[cur]; render2(); slides[cur].classList.toggle('done',!!done[cur]);
+    tally.textContent='done '+doneCount()+'/'+N; save(); } }
+  document.getElementById('prevb').onclick=function(){go(cur-1)};
+  document.getElementById('nextb').onclick=function(){go(cur+1)};
+  jump.onchange=function(){go(parseInt(jump.value,10))};
+  document.getElementById('revealAll').onclick=function(){
+    var on=document.body.classList.toggle('allsol');
+    this.textContent=on?'Hide all':'Reveal all'; };
+  slides.forEach(function(s,i){
+    var b=s.querySelector('.sbtn'); if(b) b.onclick=toggleSol;
+    var d=s.querySelector('.dbtn'); if(d) d.onclick=toggleDone; });
+  document.addEventListener('keydown',function(e){
+    var t=e.target&&e.target.tagName; if(t==='SELECT'||t==='INPUT'||e.ctrlKey||e.metaKey||e.altKey) return;
+    var k=e.key;
+    if(k==='ArrowRight'||k==='PageDown'||k===' '){ e.preventDefault(); go(cur+1); }
+    else if(k==='ArrowLeft'||k==='PageUp'){ e.preventDefault(); go(cur-1); }
+    else if(k==='Home'){ go(0); } else if(k==='End'){ go(N); }
+    else if(k==='s'||k==='S'){ toggleSol(); } else if(k==='d'||k==='D'){ toggleDone(); }
+  });
+  var x0=null,y0=null;
+  document.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  document.addEventListener('touchend',function(e){ if(x0===null) return;
+    var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
+    if(Math.abs(dx)>70 && Math.abs(dy)<50) go(cur+(dx<0?1:-1)); },{passive:true});
+  function fromHash(){ var m=/^#p(\d+)$/.exec(location.hash||''); return m?parseInt(m[1],10):-1; }
+  window.addEventListener('hashchange',function(){ var i=fromHash(); if(i>=0&&i<=N&&i!==cur) go(i); });
+  var h=fromHash();
+  if(h>=0&&h<=N) cur=h; else { try{ var v=parseInt(localStorage.getItem(KEY+'-pos'),10); if(v>=0&&v<=N) cur=v; }catch(e){} }
+  render();
+  /* Printing: CSS shows every slide with every solution. Do NOT add .on here --
+     it restarts animations from opacity:0 and prints blank pages. */
+})();
+</script></body></html>

@@ -1,0 +1,278 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="pyq-slides" content="2"><meta name="pyq-marks" content="11">
+<title>ISC Computer Science, Unit 5: Objects – previous-year questions</title><style>
+.fr{display:inline-block; vertical-align:middle; text-align:center; font-size:.92em;
+    margin:0 .16em; line-height:1.22}
+.fr .n{display:block; border-bottom:1px solid currentColor; padding:0 .26em}
+.fr .d{display:block; padding:0 .26em}
+.rt{white-space:nowrap}
+.rt .bar{border-top:1px solid currentColor; padding:0 .14em 0 .05em; margin-left:-.03em}
+.rt .ridx{font-size:.6em; margin-right:-.25em}
+.ig{display:inline-flex; align-items:center; vertical-align:middle; gap:.06em}
+.ig .sym{font-size:1.9em; line-height:.85}
+.ig .lim{display:inline-flex; flex-direction:column; font-size:.72em; line-height:1.15;
+         margin:0 .15em 0 -.05em}
+.ig .hi{margin-bottom:1.1em}
+.ig .lo{margin-top:0}
+.mx{position:relative; display:inline-grid; vertical-align:middle; justify-items:center;
+    gap:.16em .7em; padding:.3em .5em; margin:0 .16em; font-size:.94em; line-height:1.2}
+.mx::before,.mx::after{content:""; position:absolute; top:0; bottom:0; width:.3em;
+                       border:1.5px solid currentColor}
+.mx::before{left:0; border-right:none}
+.mx::after{right:0; border-left:none}
+.mx.det::before,.mx.det::after{width:0; border-top:none; border-bottom:none}
+.mx.det::before{border-right:none}
+.mx.det::after{border-left:1.5px solid currentColor; border-right:none}
+.pw{display:inline-flex; align-items:center; vertical-align:middle; gap:.3em; margin:0 .1em}
+.pw .brace{font-size:2.3em; line-height:.75; font-weight:200}
+.pw .cases{display:inline-grid; grid-template-columns:auto auto; gap:.12em .9em;
+           font-size:.94em; line-height:1.25; text-align:left}
+.lm{display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle;
+    line-height:1.05; margin:0 .1em}
+.lm .op{font-size:.95em}
+.lm .to{font-size:.66em}
+.vec{position:relative; display:inline-block; padding-top:.18em}
+.vec::before{content:"\2192"; position:absolute; top:-.55em; left:0; right:0;
+             text-align:center; font-size:.8em}
+sup,sub{font-size:.72em; line-height:0}
+.disp{text-align:center; margin:.45em 0}
+.tw{overflow-x:auto; margin:.5em 0}
+table{border-collapse:collapse}
+td,th{border:1px solid #999; padding:.25em .55em; vertical-align:top}
+th{background:#f0f0f0}
+table.plain td{border:none}
+pre.code{font-family:"DejaVu Sans Mono",monospace; font-size:.86em; line-height:1.4;
+         background:#f7f7f5; border:1px solid #ddd; padding:.6em .8em; overflow-x:auto;
+         white-space:pre; margin:.5em 0}
+svg{max-width:100%; height:auto}
+figure{margin:.6em auto; text-align:center}
+figcaption{font-size:.85em; font-style:italic}
+
+:root{--bg:#EEF1F6;--surface:#fff;--surface2:#F6F8FC;--ink:#151B26;--muted:#5A6577;--rule:#D5DCE7;
+  --accent:#2A4B8D;--accent-soft:#DFE7F6;--accent-ink:#1D3667;--warm:#8A5A12;--warm-soft:#FBF0DC;
+  --ok:#186B45;--ok-soft:#DDF0E6;--danger:#B0402F;--danger-soft:#F8E4E0;
+  --shadow:0 1px 2px rgba(21,27,38,.05),0 10px 28px -20px rgba(21,27,38,.4);
+  --serif:Charter,"Bitstream Charter",Cambria,Georgia,"Times New Roman",serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);padding-bottom:4.6rem}
+button{font:inherit;cursor:pointer}
+kbd{font:.78em ui-monospace,Menlo,Consolas,monospace;background:#fff;border:1px solid var(--rule);
+    border-bottom-width:2px;border-radius:4px;padding:0 .35em}
+.muted{color:var(--muted)}
+#deck{max-width:1180px;margin:0 auto;padding:.8rem 16px 1rem}
+.slide{display:none}
+.slide.on{display:block}
+.crumb{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--warm);font-weight:650;margin:.2rem 0 .6rem}
+.crumb .src{color:var(--muted);text-transform:none;letter-spacing:0;font-weight:500}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 19.5rem;gap:1.1rem;align-items:start}
+.recall{position:sticky;top:.8rem;background:var(--warm-soft);border:1px solid color-mix(in srgb,var(--warm) 30%,transparent);
+  border-radius:12px;padding:.8rem 1rem;font-size:.9rem;box-shadow:var(--shadow)}
+.recall h3{margin:0 0 .4rem;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--warm)}
+.recall ul{margin:0;padding-left:1.1rem}.recall li{margin:.35rem 0}
+.qcard,.sol,.panel{background:var(--surface);border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow)}
+.qcard{padding:1rem 1.2rem}
+.qhead{display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem}
+.qno{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--accent-ink)}
+.chip{background:var(--accent-soft);color:var(--accent-ink);border-radius:99px;padding:.05rem .65rem;font-size:.82rem;font-weight:650}
+.qbody p{margin:.4rem 0}
+.qbody{font-family:var(--serif);font-size:1.05rem}
+.opts{display:grid;gap:.3rem;margin:.6rem 0 .2rem;font-family:var(--serif);font-size:1.03rem}
+.opt{display:grid;grid-template-columns:2.2em 1fr;padding:.15rem .5rem;border-radius:7px;border:1px solid transparent}
+.ol{color:var(--muted)}
+.shown .opt.right,body.allsol .opt.right{background:var(--ok-soft);border-color:var(--ok);font-weight:600}
+.orbar{text-align:center;font-weight:700;letter-spacing:.3em;color:var(--muted);margin:.9rem 0 .5rem;
+  border-top:1px dashed var(--rule-strong,#A3AFC2);padding-top:.7rem}
+.qfig,.solfig{text-align:center;margin:.6rem 0}
+figure.fg{margin:.4rem auto;text-align:center}
+figure.fg svg{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:2px}
+figcaption{font-size:.82rem;color:var(--muted);font-style:italic;margin-top:.2rem}
+.actions{display:flex;gap:.6rem;margin:.8rem 0}
+.sbtn{background:var(--accent);color:#fff;border:0;border-radius:9px;padding:.5rem 1.1rem;font-weight:650}
+.sbtn:hover{background:var(--accent-ink)}
+.dbtn{background:#fff;color:var(--ink);border:1px solid var(--rule);border-radius:9px;padding:.5rem .9rem}
+.slide.done .dbtn{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);font-weight:650}
+.sol{display:none;padding:1rem 1.2rem;border-top:4px solid var(--ok)}
+.shown .sol,body.allsol .sol{display:block}
+.solh{margin:.8rem 0 .2rem;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.solh:first-child{margin-top:0}
+ol.steps2{list-style:none;margin:.2rem 0;padding:0}
+.st{display:grid;grid-template-columns:minmax(0,1fr) 3.4em;gap:.6rem;padding:.38rem 0;border-bottom:1px dotted var(--rule)}
+.st .sm{text-align:right;font-weight:700;color:var(--accent);white-space:nowrap;font-family:var(--serif)}
+.st.nm .sx{color:var(--ink);font-weight:650}
+.st .sx p{margin:.2rem 0}
+.ansbox{margin:.8rem 0 .3rem;border:2px solid var(--ok);background:var(--ok-soft);border-radius:9px;padding:.45rem .8rem}
+.lab{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.ansbox .lab{color:var(--ok)}
+.slip{margin:.6rem 0;background:var(--danger-soft);border-left:4px solid var(--danger);padding:.4rem .8rem;border-radius:0 8px 8px 0;font-size:.93rem}
+.slip .lab{color:var(--danger)}
+.mnote{margin:.6rem 0;background:var(--surface2);border-left:4px solid var(--accent);padding:.4rem .8rem;border-radius:0 8px 8px 0;font-size:.93rem}
+.mnote .lab{color:var(--accent)}
+.disp{text-align:center;margin:.4em 0}
+.panel{padding:.9rem 1.2rem;margin:1rem 0}.panel h2{font-size:.95rem;margin:0 0 .4rem;color:var(--warm)}
+.panel li{margin:.2rem 0}
+.cover .coverin{max-width:52rem;margin:1.2rem auto}
+.kicker{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--warm);font-weight:650;margin:0}
+h1{font-family:var(--serif);font-size:clamp(1.6rem,4.4vw,2.3rem);line-height:1.18;margin:.4rem 0 .8rem;color:var(--accent-ink)}
+.statrow{display:flex;flex-wrap:wrap;gap:.5rem}
+.stat{background:var(--surface);border:1px solid var(--rule);border-radius:9px;padding:.45rem .8rem}
+.stat b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--accent)}
+.stat span{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.badge{display:inline-block;background:var(--ok-soft);color:var(--ok);border-radius:99px;padding:.15rem .8rem;font-size:.82rem;font-weight:650}
+/* bottom bar */
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#fffffff2;border-top:1px solid var(--rule);
+  padding:.45rem 12px calc(.45rem + env(safe-area-inset-bottom,0px));backdrop-filter:blur(6px)}
+#bar .in{max-width:1180px;margin:0 auto;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+#bar button,#bar select{border:1px solid var(--rule);background:#fff;border-radius:8px;padding:.35rem .8rem;color:var(--ink)}
+#bar #nextb{background:var(--accent);color:#fff;border-color:var(--accent)}
+#bar select{max-width:15rem}
+#counter{font-size:.85rem;color:var(--muted);min-width:5.5rem;text-align:center}
+#prog{flex:1;height:5px;background:var(--rule);border-radius:9px;min-width:4rem;overflow:hidden}
+#prog i{display:block;height:100%;width:0;background:var(--accent)}
+#tally{font-size:.8rem;color:var(--muted)}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.recall{position:static}
+  #deck{padding-left:10px;padding-right:10px}#prog{display:none}}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:#fff;padding:0;font-size:11pt}
+  #bar{display:none}
+  .slide,.slide.on{display:block;break-after:page;animation:none;opacity:1}
+  .sol,.shown .sol{display:block}.opt.right{background:var(--ok-soft);border-color:var(--ok)}
+  .grid{grid-template-columns:1fr 17rem}.recall{position:static}
+  .qcard,.sol,.recall,.panel{box-shadow:none}.actions{display:none}
+  .cover{break-after:page}
+}
+
+.chnote{font-size:.82rem;color:#8A5A12;background:#FBF0DC;border-radius:6px;padding:.25rem .6rem;margin:0 0 .5rem}
+.chnote.topic{color:#234;background:#E6EEF8}
+.freq{border-collapse:collapse;width:100%;font-size:.88rem;margin:.4rem 0}
+.freq th,.freq td{border:1px solid var(--rule);padding:.3rem .5rem;text-align:center}
+.freq th{background:var(--surface2)}.freq td.l,.freq th.l{text-align:left}.freq tr.tot td{font-weight:bold;background:var(--surface2)}
+.freq td.z{color:#aaa}.fwrap{overflow-x:auto}
+.cnav{display:flex;justify-content:space-between;gap:1rem;margin-top:.8rem;font-size:.9rem}
+:root{--accent:#8A6D12;--accent-ink:#8A6D12}
+</style></head><body>
+<div id="deck"><section class="slide cover" id="q0" data-i="0"><div class="coverin"><p class="kicker">ISC Computer Science &middot; chapter-wise previous-year questions</p><h1>Unit 5: Objects</h1><div class="statrow"><div class="stat"><b>2</b><span>question entries</span></div><div class="stat"><b>11</b><span>marks set in 5 papers</span></div><div class="stat"><b>2 / 5</b><span>papers with this unit</span></div><div class="stat"><b>2.2</b><span>average marks set a paper</span></div></div><p class="badge">Board 2024, 2025, 2025 Improvement, 2026 and CISCE Specimen 2025 &middot; same worked solutions as the paper-wise decks. Specimen 2026 and 2027 are not held locally, so they are not here.</p><div class="panel"><h2>How often it was set</h2><div class="fwrap"><table class="freq"><thead><tr><th>&nbsp;</th><th>Board 2024</th><th>Board 2025</th><th>Board 2025 Imp.</th><th>Board 2026</th><th>Specimen 2025</th><th>Total</th></tr></thead><tbody><tr><td class="l">Marks set (of 95)</td><td class="z">&ndash;</td><td class="">1</td><td class="z">&ndash;</td><td class="">10</td><td class="z">&ndash;</td><td><b>11</b></td></tr><tr><td class="l">Question entries</td><td class="z">&ndash;</td><td class="">1</td><td class="z">&ndash;</td><td class="">1</td><td class="z">&ndash;</td><td><b>2</b></td></tr><tr><td class="l">1-mark questions</td><td class="z">&ndash;</td><td class="">1</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td>1</td></tr><tr><td class="l">10-mark questions</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="">1</td><td class="z">&ndash;</td><td>1</td></tr></tbody></table></div><p class="muted" style="font-size:.85rem">Syllabus: ISC 2027 Computer Science Paper 1, unit 5 (Part II Section B). Each paper sets 95 marks (Part I 20 + Part II 75); a candidate answers 70, taking two of three questions in each Part II section, so the table counts <b>marks set</b>, not marks attempted.</p></div><div class="panel"><h2>What to revise</h2><ul><li><b>Rare as a stand-alone topic:</b> constructor with the <i>this</i> keyword (board 2025 Q1(v)) and an object passed to and returned from a method (board 2026 TimeOp, 10 marks).</li><li><b>Learn:</b> constructors and default constructors, instance variable vs parameter, how a method receives an object and what it returns, creating the object in main().</li></ul></div><div class="panel"><h2>Contents</h2><ul><b>ONE-MARK QUESTIONS (1)</b></li><li><b>TEN-MARK QUESTIONS (1)</b></ul></div><div class="panel keys"><h2>How to use it</h2><p>One question to a slide, grouped by marks, newest paper first; the tag at the top right names the paper and question. Think first, then press <kbd>S</kbd> or <i>Show solution</i>. <b>Concepts to recall</b> sits beside the question. <kbd>&larr;</kbd> <kbd>&rarr;</kbd> or <kbd>space</kbd> move, <kbd>D</kbd> marks done, <kbd>Home</kbd>/<kbd>End</kbd> jump, and the menu at the foot jumps to any question.</p><div class="cnav"><span><a href="Ch03-Implementation-of-Algorithms.html">&larr; Ch 3 Implementation of Algorithms</a></span><span><a href="Ch07-Variables-Expressions.html">Ch 7 Variables, Expressions &rarr;</a></span></div></div></div></section><section class="slide" id="q1" data-i="1" data-sec="ONE-MARK QUESTIONS (1)"><div class="crumb"><span>ONE-MARK QUESTIONS (1)</span><span class="src">ISC 2025 Computer Science Paper 1 (868A), Q1(v)</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 1(v) &middot; Board 2025</span><span class="chip">[1]</span></div><div class="qbody"><div class="chnote">Also draws on: constructor with the this keyword (Ch 9).</div>Consider the following code statement:<pre class="code java">public class Person
+{
+    int age;
+    public Person(int age)
+    {
+        this.age = age;
+    }
+}</pre>Which of the following statements are valid for the given code?<br>I. The keyword <i>this</i> in the constructor refers to the current instance of the class.<br>II. The keyword <i>this</i> differentiates between the instance variable age and the parameter age.<br>III. The keyword <i>this</i> can be used only in constructors.</div><div class="opts"><div class="opt right"><span class="ol">(a)</span><span>Only I and II</span></div><div class="opt"><span class="ol">(b)</span><span>Only II and III</span></div><div class="opt"><span class="ol">(c)</span><span>Only I and III</span></div><div class="opt"><span class="ol">(d)</span><span>Only III</span></div></div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">I is true: <code>this</code> is a reference to the object on which the constructor is running.</div><div class="sm">[½]</div></li><li class="st"><div class="sx">II is true: <code>this.age</code> is the instance variable, plain <code>age</code> is the parameter. III is false: <code>this</code> may be used in any instance method, not only constructors. So only I and II.</div><div class="sm">[½]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>(a) Only I and II</div></div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li><code>this</code> = reference to the current object; used to separate a field from a parameter of the same name, to call another constructor <code>this(...)</code> and to pass the current object.</li><li>It cannot be used in a static method, but it is certainly not restricted to constructors.</li></ul></aside></div></section><section class="slide" id="q2" data-i="2" data-sec="TEN-MARK QUESTIONS (1)"><div class="crumb"><span>TEN-MARK QUESTIONS (1)</span><span class="src">ISC 2026 Computer Science Paper 1 (868A), Q6</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 6 &middot; Board 2026</span><span class="chip">[10]</span></div><div class="qbody"><div class="chnote">Also draws on: an object passed to and returned from a method (addTime(TimeOp)); the array holds h, m, s.</div>A class <b>TimeOp</b> adds any two accepted time periods. Example: Time A = 6 hours 35 minutes 40 seconds, Time B = 7 hours 45 minutes 30 seconds, Time A + Time B = 14 hours 21 minutes 10 seconds (60 minutes = 1 hour, 60 seconds = 1 minute).<div class="tw"><table class="plain spec"><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">Class name</td><td style="border:none">: TimeOp</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Data member / instance variable</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">arr[ ]</td><td style="border:none">: integer array to hold three elements (hours, minutes and seconds)</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Methods / member functions</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">TimeOp( )</td><td style="border:none">: default constructor</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void readTime( )</td><td style="border:none">: to accept the elements of the array</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">TimeOp addTime(TimeOp tt)</td><td style="border:none">: to add the time of the parameterised object tt and the current object, to store it in a local object and return it</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void dispTime( )</td><td style="border:none">: to display the array elements in hours:minutes:seconds format</td></tr></table></div>Specify the class TimeOp giving the details of the constructor( ), void readTime( ), TimeOp addTime(TimeOp) and void dispTime( ). Define the main( ) function to create objects and call the functions accordingly. [10]</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Class header, array declaration <code>int arr[]</code> (hours, minutes, seconds)</div><div class="sm">[½]</div></li><li class="st"><div class="sx">Default constructor: <code>arr = new int[3];</code></div><div class="sm">[1]</div></li><li class="st"><div class="sx"><code>readTime()</code>: accept the three values into the array with a loop (or three statements)</div><div class="sm">[1½]</div></li><li class="st"><div class="sx"><code>addTime(TimeOp tt)</code>: local object; seconds total <code>arr[2]+tt.arr[2]</code>; carry <code>/60</code> into minutes; minutes carry <code>/60</code> into hours; store <code>%60</code> for seconds and minutes; return the object</div><div class="sm">[3]</div></li><li class="st"><div class="sx"><code>dispTime()</code>: print hours:minutes:seconds</div><div class="sm">[1½]</div></li><li class="st"><div class="sx"><code>main()</code>: create two objects, call readTime() on each, call addTime(), display the result</div><div class="sm">[2½]</div></li><li class="st nm"><div class="sx"><div style="font-weight:400"><b>Program</b> (compiled and run: 6:35:40 + 7:45:30 gives 14:21:10; 1:59:59 + 0:0:1 gives 2:0:0):<pre class="code java">import java.util.*;
+class TimeOp
+{
+    int arr[];                              // hours, minutes, seconds
+    static Scanner sc = new Scanner(System.in);
+
+    TimeOp()                                // default constructor
+    {
+        arr = new int[3];
+    }
+
+    void readTime()                         // accepts hours, minutes and seconds
+    {
+        System.out.println(&quot;Enter hours, minutes and seconds:&quot;);
+        for (int i = 0; i &lt; 3; i++)
+            arr[i] = sc.nextInt();
+    }
+
+    TimeOp addTime(TimeOp tt)               // adds tt and the current object
+    {
+        TimeOp t = new TimeOp();            // local object to hold the sum
+        int s = arr[2] + tt.arr[2];
+        int m = arr[1] + tt.arr[1] + s / 60; // carry of seconds into minutes
+        int h = arr[0] + tt.arr[0] + m / 60; // carry of minutes into hours
+        t.arr[2] = s % 60;
+        t.arr[1] = m % 60;
+        t.arr[0] = h;
+        return t;
+    }
+
+    void dispTime()
+    {
+        System.out.println(arr[0] + &quot;:&quot; + arr[1] + &quot;:&quot; + arr[2]);
+    }
+
+    public static void main(String args[])
+    {
+        TimeOp A = new TimeOp();
+        TimeOp B = new TimeOp();
+        System.out.println(&quot;Time A&quot;);
+        A.readTime();
+        System.out.println(&quot;Time B&quot;);
+        B.readTime();
+        TimeOp C = A.addTime(B);
+        System.out.print(&quot;Time A + Time B = &quot;);
+        C.dispTime();
+    }
+}</pre></div></div><div class="sm"></div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Time A + Time B = 14:21:10 for the example (program above).</div></div><div class="slip"><span class="lab">Common slip</span> Adding without carrying (gives 13:80:70), or modifying the current object instead of storing the sum in a local object.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Object passed as a parameter: <code>tt.arr</code> is the argument object&rsquo;s array, <code>arr</code> the current object&rsquo;s; the method returns a new object.</li><li>Carry: total seconds / 60 goes to minutes; total seconds % 60 stays. Do the same for minutes to hours; hours need no limit (14 hours here).</li><li>Use a loop to read the array; give mnemonic names and comments, as the paper requires.</li></ul></aside></div></section></div>
+<div id="bar"><div class="in">
+<button id="prevb" type="button">&larr; Prev</button><span id="counter">0 / 2</span>
+<button id="nextb" type="button">Next &rarr;</button>
+<select id="jump" aria-label="Jump to question"><option value="0">Cover</option><optgroup label="ONE-MARK QUESTIONS (1)"><option value="1">Q1(v) &middot; Board 2025 &middot; 1 mk</option></optgroup><optgroup label="TEN-MARK QUESTIONS (1)"><option value="2">Q6 &middot; Board 2026 &middot; 10 mk</option></optgroup></select>
+<div id="prog"><i></i></div>
+<button id="revealAll" type="button">Reveal all</button>
+<span id="tally"></span>
+<a href="index.html" style="font-size:.82rem;color:var(--accent)">All chapters</a>
+</div></div>
+<script>
+(function(){
+  var KEY='isc-pyq-computers-chapter05-v1';
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var N=slides.length-1, cur=0, done={};
+  try{ done=JSON.parse(localStorage.getItem(KEY+'-done')||'{}'); }catch(e){}
+  var counter=document.getElementById('counter'), jump=document.getElementById('jump'),
+      prog=document.querySelector('#prog i'), tally=document.getElementById('tally');
+  function save(){ try{ localStorage.setItem(KEY+'-pos',String(cur)); localStorage.setItem(KEY+'-done',JSON.stringify(done)); }catch(e){} }
+  function doneCount(){ return Object.keys(done).filter(function(k){return done[k];}).length; }
+  function render(){
+    slides.forEach(function(s,i){ s.classList.toggle('on',i===cur); s.classList.toggle('done',!!done[i]); });
+    counter.textContent=cur+' / '+N; jump.value=String(cur);
+    prog.style.width=(100*cur/N)+'%';
+    tally.textContent='done '+doneCount()+'/'+N;
+    var s=slides[cur].querySelector('.sbtn');
+    if(s) s.textContent=slides[cur].classList.contains('shown')?'Hide solution':'Show solution';
+    try{ history.replaceState(null,'','#p'+cur); }catch(e){}
+    save(); window.scrollTo(0,0);
+  }
+  function go(i){ cur=Math.max(0,Math.min(N,i)); render(); }
+  function toggleSol(){ var s=slides[cur]; if(cur>0){ s.classList.toggle('shown'); render2(); } }
+  function render2(){ var s=slides[cur].querySelector('.sbtn');
+    if(s) s.textContent=slides[cur].classList.contains('shown')?'Hide solution':'Show solution'; }
+  function toggleDone(){ if(cur>0){ done[cur]=!done[cur]; render2(); slides[cur].classList.toggle('done',!!done[cur]);
+    tally.textContent='done '+doneCount()+'/'+N; save(); } }
+  document.getElementById('prevb').onclick=function(){go(cur-1)};
+  document.getElementById('nextb').onclick=function(){go(cur+1)};
+  jump.onchange=function(){go(parseInt(jump.value,10))};
+  document.getElementById('revealAll').onclick=function(){
+    var on=document.body.classList.toggle('allsol');
+    this.textContent=on?'Hide all':'Reveal all'; };
+  slides.forEach(function(s,i){
+    var b=s.querySelector('.sbtn'); if(b) b.onclick=toggleSol;
+    var d=s.querySelector('.dbtn'); if(d) d.onclick=toggleDone; });
+  document.addEventListener('keydown',function(e){
+    var t=e.target&&e.target.tagName; if(t==='SELECT'||t==='INPUT'||e.ctrlKey||e.metaKey||e.altKey) return;
+    var k=e.key;
+    if(k==='ArrowRight'||k==='PageDown'||k===' '){ e.preventDefault(); go(cur+1); }
+    else if(k==='ArrowLeft'||k==='PageUp'){ e.preventDefault(); go(cur-1); }
+    else if(k==='Home'){ go(0); } else if(k==='End'){ go(N); }
+    else if(k==='s'||k==='S'){ toggleSol(); } else if(k==='d'||k==='D'){ toggleDone(); }
+  });
+  var x0=null,y0=null;
+  document.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  document.addEventListener('touchend',function(e){ if(x0===null) return;
+    var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
+    if(Math.abs(dx)>70 && Math.abs(dy)<50) go(cur+(dx<0?1:-1)); },{passive:true});
+  function fromHash(){ var m=/^#p(\d+)$/.exec(location.hash||''); return m?parseInt(m[1],10):-1; }
+  window.addEventListener('hashchange',function(){ var i=fromHash(); if(i>=0&&i<=N&&i!==cur) go(i); });
+  var h=fromHash();
+  if(h>=0&&h<=N) cur=h; else { try{ var v=parseInt(localStorage.getItem(KEY+'-pos'),10); if(v>=0&&v<=N) cur=v; }catch(e){} }
+  render();
+  /* Printing: CSS shows every slide with every solution. Do NOT add .on here --
+     it restarts animations from opacity:0 and prints blank pages. */
+})();
+</script></body></html>

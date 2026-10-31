@@ -1,0 +1,401 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="pyq-slides" content="9"><meta name="pyq-marks" content="29">
+<title>ISC Computer Science, Unit 12: Inheritance, Interfaces and Polymorphism – previous-year questions</title><style>
+.fr{display:inline-block; vertical-align:middle; text-align:center; font-size:.92em;
+    margin:0 .16em; line-height:1.22}
+.fr .n{display:block; border-bottom:1px solid currentColor; padding:0 .26em}
+.fr .d{display:block; padding:0 .26em}
+.rt{white-space:nowrap}
+.rt .bar{border-top:1px solid currentColor; padding:0 .14em 0 .05em; margin-left:-.03em}
+.rt .ridx{font-size:.6em; margin-right:-.25em}
+.ig{display:inline-flex; align-items:center; vertical-align:middle; gap:.06em}
+.ig .sym{font-size:1.9em; line-height:.85}
+.ig .lim{display:inline-flex; flex-direction:column; font-size:.72em; line-height:1.15;
+         margin:0 .15em 0 -.05em}
+.ig .hi{margin-bottom:1.1em}
+.ig .lo{margin-top:0}
+.mx{position:relative; display:inline-grid; vertical-align:middle; justify-items:center;
+    gap:.16em .7em; padding:.3em .5em; margin:0 .16em; font-size:.94em; line-height:1.2}
+.mx::before,.mx::after{content:""; position:absolute; top:0; bottom:0; width:.3em;
+                       border:1.5px solid currentColor}
+.mx::before{left:0; border-right:none}
+.mx::after{right:0; border-left:none}
+.mx.det::before,.mx.det::after{width:0; border-top:none; border-bottom:none}
+.mx.det::before{border-right:none}
+.mx.det::after{border-left:1.5px solid currentColor; border-right:none}
+.pw{display:inline-flex; align-items:center; vertical-align:middle; gap:.3em; margin:0 .1em}
+.pw .brace{font-size:2.3em; line-height:.75; font-weight:200}
+.pw .cases{display:inline-grid; grid-template-columns:auto auto; gap:.12em .9em;
+           font-size:.94em; line-height:1.25; text-align:left}
+.lm{display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle;
+    line-height:1.05; margin:0 .1em}
+.lm .op{font-size:.95em}
+.lm .to{font-size:.66em}
+.vec{position:relative; display:inline-block; padding-top:.18em}
+.vec::before{content:"\2192"; position:absolute; top:-.55em; left:0; right:0;
+             text-align:center; font-size:.8em}
+sup,sub{font-size:.72em; line-height:0}
+.disp{text-align:center; margin:.45em 0}
+.tw{overflow-x:auto; margin:.5em 0}
+table{border-collapse:collapse}
+td,th{border:1px solid #999; padding:.25em .55em; vertical-align:top}
+th{background:#f0f0f0}
+table.plain td{border:none}
+pre.code{font-family:"DejaVu Sans Mono",monospace; font-size:.86em; line-height:1.4;
+         background:#f7f7f5; border:1px solid #ddd; padding:.6em .8em; overflow-x:auto;
+         white-space:pre; margin:.5em 0}
+svg{max-width:100%; height:auto}
+figure{margin:.6em auto; text-align:center}
+figcaption{font-size:.85em; font-style:italic}
+
+:root{--bg:#EEF1F6;--surface:#fff;--surface2:#F6F8FC;--ink:#151B26;--muted:#5A6577;--rule:#D5DCE7;
+  --accent:#2A4B8D;--accent-soft:#DFE7F6;--accent-ink:#1D3667;--warm:#8A5A12;--warm-soft:#FBF0DC;
+  --ok:#186B45;--ok-soft:#DDF0E6;--danger:#B0402F;--danger-soft:#F8E4E0;
+  --shadow:0 1px 2px rgba(21,27,38,.05),0 10px 28px -20px rgba(21,27,38,.4);
+  --serif:Charter,"Bitstream Charter",Cambria,Georgia,"Times New Roman",serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);padding-bottom:4.6rem}
+button{font:inherit;cursor:pointer}
+kbd{font:.78em ui-monospace,Menlo,Consolas,monospace;background:#fff;border:1px solid var(--rule);
+    border-bottom-width:2px;border-radius:4px;padding:0 .35em}
+.muted{color:var(--muted)}
+#deck{max-width:1180px;margin:0 auto;padding:.8rem 16px 1rem}
+.slide{display:none}
+.slide.on{display:block}
+.crumb{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--warm);font-weight:650;margin:.2rem 0 .6rem}
+.crumb .src{color:var(--muted);text-transform:none;letter-spacing:0;font-weight:500}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 19.5rem;gap:1.1rem;align-items:start}
+.recall{position:sticky;top:.8rem;background:var(--warm-soft);border:1px solid color-mix(in srgb,var(--warm) 30%,transparent);
+  border-radius:12px;padding:.8rem 1rem;font-size:.9rem;box-shadow:var(--shadow)}
+.recall h3{margin:0 0 .4rem;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--warm)}
+.recall ul{margin:0;padding-left:1.1rem}.recall li{margin:.35rem 0}
+.qcard,.sol,.panel{background:var(--surface);border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow)}
+.qcard{padding:1rem 1.2rem}
+.qhead{display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem}
+.qno{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--accent-ink)}
+.chip{background:var(--accent-soft);color:var(--accent-ink);border-radius:99px;padding:.05rem .65rem;font-size:.82rem;font-weight:650}
+.qbody p{margin:.4rem 0}
+.qbody{font-family:var(--serif);font-size:1.05rem}
+.opts{display:grid;gap:.3rem;margin:.6rem 0 .2rem;font-family:var(--serif);font-size:1.03rem}
+.opt{display:grid;grid-template-columns:2.2em 1fr;padding:.15rem .5rem;border-radius:7px;border:1px solid transparent}
+.ol{color:var(--muted)}
+.shown .opt.right,body.allsol .opt.right{background:var(--ok-soft);border-color:var(--ok);font-weight:600}
+.orbar{text-align:center;font-weight:700;letter-spacing:.3em;color:var(--muted);margin:.9rem 0 .5rem;
+  border-top:1px dashed var(--rule-strong,#A3AFC2);padding-top:.7rem}
+.qfig,.solfig{text-align:center;margin:.6rem 0}
+figure.fg{margin:.4rem auto;text-align:center}
+figure.fg svg{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:2px}
+figcaption{font-size:.82rem;color:var(--muted);font-style:italic;margin-top:.2rem}
+.actions{display:flex;gap:.6rem;margin:.8rem 0}
+.sbtn{background:var(--accent);color:#fff;border:0;border-radius:9px;padding:.5rem 1.1rem;font-weight:650}
+.sbtn:hover{background:var(--accent-ink)}
+.dbtn{background:#fff;color:var(--ink);border:1px solid var(--rule);border-radius:9px;padding:.5rem .9rem}
+.slide.done .dbtn{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);font-weight:650}
+.sol{display:none;padding:1rem 1.2rem;border-top:4px solid var(--ok)}
+.shown .sol,body.allsol .sol{display:block}
+.solh{margin:.8rem 0 .2rem;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.solh:first-child{margin-top:0}
+ol.steps2{list-style:none;margin:.2rem 0;padding:0}
+.st{display:grid;grid-template-columns:minmax(0,1fr) 3.4em;gap:.6rem;padding:.38rem 0;border-bottom:1px dotted var(--rule)}
+.st .sm{text-align:right;font-weight:700;color:var(--accent);white-space:nowrap;font-family:var(--serif)}
+.st.nm .sx{color:var(--ink);font-weight:650}
+.st .sx p{margin:.2rem 0}
+.ansbox{margin:.8rem 0 .3rem;border:2px solid var(--ok);background:var(--ok-soft);border-radius:9px;padding:.45rem .8rem}
+.lab{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.ansbox .lab{color:var(--ok)}
+.slip{margin:.6rem 0;background:var(--danger-soft);border-left:4px solid var(--danger);padding:.4rem .8rem;border-radius:0 8px 8px 0;font-size:.93rem}
+.slip .lab{color:var(--danger)}
+.mnote{margin:.6rem 0;background:var(--surface2);border-left:4px solid var(--accent);padding:.4rem .8rem;border-radius:0 8px 8px 0;font-size:.93rem}
+.mnote .lab{color:var(--accent)}
+.disp{text-align:center;margin:.4em 0}
+.panel{padding:.9rem 1.2rem;margin:1rem 0}.panel h2{font-size:.95rem;margin:0 0 .4rem;color:var(--warm)}
+.panel li{margin:.2rem 0}
+.cover .coverin{max-width:52rem;margin:1.2rem auto}
+.kicker{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--warm);font-weight:650;margin:0}
+h1{font-family:var(--serif);font-size:clamp(1.6rem,4.4vw,2.3rem);line-height:1.18;margin:.4rem 0 .8rem;color:var(--accent-ink)}
+.statrow{display:flex;flex-wrap:wrap;gap:.5rem}
+.stat{background:var(--surface);border:1px solid var(--rule);border-radius:9px;padding:.45rem .8rem}
+.stat b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--accent)}
+.stat span{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.badge{display:inline-block;background:var(--ok-soft);color:var(--ok);border-radius:99px;padding:.15rem .8rem;font-size:.82rem;font-weight:650}
+/* bottom bar */
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#fffffff2;border-top:1px solid var(--rule);
+  padding:.45rem 12px calc(.45rem + env(safe-area-inset-bottom,0px));backdrop-filter:blur(6px)}
+#bar .in{max-width:1180px;margin:0 auto;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+#bar button,#bar select{border:1px solid var(--rule);background:#fff;border-radius:8px;padding:.35rem .8rem;color:var(--ink)}
+#bar #nextb{background:var(--accent);color:#fff;border-color:var(--accent)}
+#bar select{max-width:15rem}
+#counter{font-size:.85rem;color:var(--muted);min-width:5.5rem;text-align:center}
+#prog{flex:1;height:5px;background:var(--rule);border-radius:9px;min-width:4rem;overflow:hidden}
+#prog i{display:block;height:100%;width:0;background:var(--accent)}
+#tally{font-size:.8rem;color:var(--muted)}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.recall{position:static}
+  #deck{padding-left:10px;padding-right:10px}#prog{display:none}}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:#fff;padding:0;font-size:11pt}
+  #bar{display:none}
+  .slide,.slide.on{display:block;break-after:page;animation:none;opacity:1}
+  .sol,.shown .sol{display:block}.opt.right{background:var(--ok-soft);border-color:var(--ok)}
+  .grid{grid-template-columns:1fr 17rem}.recall{position:static}
+  .qcard,.sol,.recall,.panel{box-shadow:none}.actions{display:none}
+  .cover{break-after:page}
+}
+
+.chnote{font-size:.82rem;color:#8A5A12;background:#FBF0DC;border-radius:6px;padding:.25rem .6rem;margin:0 0 .5rem}
+.chnote.topic{color:#234;background:#E6EEF8}
+.freq{border-collapse:collapse;width:100%;font-size:.88rem;margin:.4rem 0}
+.freq th,.freq td{border:1px solid var(--rule);padding:.3rem .5rem;text-align:center}
+.freq th{background:var(--surface2)}.freq td.l,.freq th.l{text-align:left}.freq tr.tot td{font-weight:bold;background:var(--surface2)}
+.freq td.z{color:#aaa}.fwrap{overflow-x:auto}
+.cnav{display:flex;justify-content:space-between;gap:1rem;margin-top:.8rem;font-size:.9rem}
+:root{--accent:#2F6B4F;--accent-ink:#2F6B4F}
+</style></head><body>
+<div id="deck"><section class="slide cover" id="q0" data-i="0"><div class="coverin"><p class="kicker">ISC Computer Science &middot; chapter-wise previous-year questions</p><h1>Unit 12: Inheritance, Interfaces and Polymorphism</h1><div class="statrow"><div class="stat"><b>9</b><span>question entries</span></div><div class="stat"><b>29</b><span>marks set in 5 papers</span></div><div class="stat"><b>5 / 5</b><span>papers with this unit</span></div><div class="stat"><b>5.8</b><span>average marks set a paper</span></div></div><p class="badge">Board 2024, 2025, 2025 Improvement, 2026 and CISCE Specimen 2025 &middot; same worked solutions as the paper-wise decks. Specimen 2026 and 2027 are not held locally, so they are not here.</p><div class="panel"><h2>How often it was set</h2><div class="fwrap"><table class="freq"><thead><tr><th>&nbsp;</th><th>Board 2024</th><th>Board 2025</th><th>Board 2025 Imp.</th><th>Board 2026</th><th>Specimen 2025</th><th>Total</th></tr></thead><tbody><tr><td class="l">Marks set (of 95)</td><td class="">6</td><td class="">5</td><td class="">7</td><td class="">6</td><td class="">5</td><td><b>29</b></td></tr><tr><td class="l">Question entries</td><td class="">2</td><td class="">1</td><td class="">3</td><td class="">2</td><td class="">1</td><td><b>9</b></td></tr><tr><td class="l">1-mark questions</td><td class="">1</td><td class="z">&ndash;</td><td class="">2</td><td class="">1</td><td class="z">&ndash;</td><td>4</td></tr><tr><td class="l">5-mark questions</td><td class="">1</td><td class="">1</td><td class="">1</td><td class="">1</td><td class="">1</td><td>5</td></tr></tbody></table></div><p class="muted" style="font-size:.85rem">Syllabus: ISC 2027 Computer Science Paper 1, unit 12 (Part II Section C). Each paper sets 95 marks (Part I 20 + Part II 75); a candidate answers 70, taking two of three questions in each Part II section, so the table counts <b>marks set</b>, not marks attempted.</p></div><div class="panel"><h2>What to revise</h2><ul><li><b>Question 10 is always inheritance (5 marks):</b> a superclass is given and the candidate writes the subclass with its constructor (calling super), a method that computes a bill, fare, salary or fine and a display method that calls the superclass display.</li><li><b>Part I:</b> one-mark items on interfaces, abstract classes, extends against implements (2024 Q1(vii), 2025 Improvement Q1(vi) and Q1(viii), 2026 Q1(vi)).</li><li><b>Habit:</b> never redeclare superclass data members; initialise them through super(...).</li></ul></div><div class="panel"><h2>Contents</h2><ul><b>ONE-MARK QUESTIONS (4)</b></li><li><b>FIVE-MARK QUESTIONS (5)</b></ul></div><div class="panel keys"><h2>How to use it</h2><p>One question to a slide, grouped by marks, newest paper first; the tag at the top right names the paper and question. Think first, then press <kbd>S</kbd> or <i>Show solution</i>. <b>Concepts to recall</b> sits beside the question. <kbd>&larr;</kbd> <kbd>&rarr;</kbd> or <kbd>space</kbd> move, <kbd>D</kbd> marks done, <kbd>Home</kbd>/<kbd>End</kbd> jump, and the menu at the foot jumps to any question.</p><div class="cnav"><span><a href="Ch11-Recursion.html">&larr; Ch 11 Recursion</a></span><span><a href="Ch13-Data-Structures.html">Ch 13 Data Structures &rarr;</a></span></div></div></div></section><section class="slide" id="q1" data-i="1" data-sec="ONE-MARK QUESTIONS (4)"><div class="crumb"><span>ONE-MARK QUESTIONS (4)</span><span class="src">ISC 2026 Computer Science Paper 1 (868A), Q1(vi)</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 1(vi) &middot; Board 2026</span><span class="chip">[1]</span></div><div class="qbody"><b>Assertion:</b> An interface in Java contains abstract and non-abstract methods.<br><b>Reason:</b> All methods in an interface must be implemented by any class that extends this interface.</div><div class="opts"><div class="opt"><span class="ol">(a)</span><span>Both Assertion and Reason are true and Reason is the correct explanation for Assertion.</span></div><div class="opt"><span class="ol">(b)</span><span>Both Assertion and Reason are true but Reason is not the correct explanation for Assertion.</span></div><div class="opt right"><span class="ol">(c)</span><span>Assertion is true and Reason is false.</span></div><div class="opt"><span class="ol">(d)</span><span>Both Assertion and Reason are false.</span></div></div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Assertion: since Java 8 an interface may hold <code>default</code> and <code>static</code> methods with bodies besides abstract methods, so it can contain non-abstract methods: <b>true</b>.</div><div class="sm">[½]</div></li><li class="st"><div class="sx">Reason: a class <i>implements</i> (not &ldquo;extends&rdquo;) an interface, and it must define only the <i>abstract</i> methods; <code>default</code> methods need not be overridden (and an abstract class need not define any). So the Reason is <b>false</b>.</div><div class="sm">[½]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>(c) Assertion is true and Reason is false.</div></div><div class="mnote"><span class="lab">Marking note</span> If a candidate argues from the older (pre-Java 8) rule that an interface has only abstract methods, the Assertion would be false and the answer (d). The ISC syllabus is Java 8 era (BlueJ), so (c) is taken. A further check: with the old rule the Assertion would be false and the Reason true, a combination the four options do not offer, so the Assertion must be meant as true and (c) is the only fit.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>An interface has abstract methods; from Java 8 it may also have <code>default</code> and <code>static</code> methods with a body. A class uses <code>implements</code>; an interface uses <code>extends</code> for another interface.</li><li>A concrete class must implement every <i>abstract</i> method of its interface; default methods are inherited.</li></ul></aside></div></section><section class="slide" id="q2" data-i="2" data-sec="ONE-MARK QUESTIONS (4)"><div class="crumb"><span>ONE-MARK QUESTIONS (4)</span><span class="src">ISC 2025 Improvement Computer Science Paper 1 (868A), Q1(vi)</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 1(vi) &middot; Board 2025 Imp.</span><span class="chip">[1]</span></div><div class="qbody">Assertion: An abstract class can contain abstract as well as non-abstract methods.<br>Reason: Abstract classes are meant to provide complete implementation of all types of methods in its sub class.</div><div class="opts"><div class="opt"><span class="ol">(a)</span><span>Both Assertion and Reason are true and Reason is the correct explanation for Assertion.</span></div><div class="opt"><span class="ol">(b)</span><span>Both Assertion and Reason are true but Reason is not the correct explanation for Assertion.</span></div><div class="opt right"><span class="ol">(c)</span><span>Assertion is true and Reason is false.</span></div><div class="opt"><span class="ol">(d)</span><span>Both Assertion and Reason are false.</span></div></div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Assertion is true: an abstract class may have abstract methods (no body) and ordinary methods with a body.</div><div class="sm">[½]</div></li><li class="st"><div class="sx">Reason is false: an abstract class provides a partial implementation; its abstract methods have no body and the subclass must supply it.</div><div class="sm">[½]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>(c) Assertion is true and Reason is false.</div></div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>abstract class: cannot be instantiated; may mix abstract and concrete methods; a subclass must override every abstract method or itself be abstract.</li><li>Interface (older Java): only abstract methods; abstract class: partial implementation.</li></ul></aside></div></section><section class="slide" id="q3" data-i="3" data-sec="ONE-MARK QUESTIONS (4)"><div class="crumb"><span>ONE-MARK QUESTIONS (4)</span><span class="src">ISC 2025 Improvement Computer Science Paper 1 (868A), Q1(viii)</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 1(viii) &middot; Board 2025 Imp.</span><span class="chip">[1]</span></div><div class="qbody">class Car extends Vehicle implements Fourwheeler { ... }<br>Which of the following statements are valid for the given code?<br>I &nbsp;Vehicle is a super class and Fourwheeler is an interface.<br>II &nbsp;Interface cannot have abstract methods.<br>III &nbsp;Keyword extends applies to class and keyword implements applies to interface.</div><div class="opts"><div class="opt"><span class="ol">(a)</span><span>Only I and II</span></div><div class="opt"><span class="ol">(b)</span><span>Only II and III</span></div><div class="opt right"><span class="ol">(c)</span><span>Only I and III</span></div><div class="opt"><span class="ol">(d)</span><span>Only II</span></div></div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">I is true: the class after <code>extends</code> is the superclass, the name after <code>implements</code> is an interface.</div><div class="sm">[½]</div></li><li class="st"><div class="sx">II is false: an interface is a set of abstract methods. III is true: a class <i>extends</i> a class and <i>implements</i> an interface. So I and III.</div><div class="sm">[½]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>(c) Only I and III</div></div><div class="slip"><span class="lab">Common slip</span> III reads loosely (an interface can also extend another interface) but as stated for this code it is valid.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>class &hellip; extends Superclass implements Interface1, Interface2: one superclass, many interfaces.</li><li>An interface declares abstract methods (and constants); the implementing class must define them all.</li></ul></aside></div></section><section class="slide" id="q4" data-i="4" data-sec="ONE-MARK QUESTIONS (4)"><div class="crumb"><span>ONE-MARK QUESTIONS (4)</span><span class="src">ISC 2024 Computer Science Paper 1 (868A), Q1(vii)</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 1(vii) &middot; Board 2024</span><span class="chip">[1]</span></div><div class="qbody">State <i>any one</i> use of <i>interfaces</i> in Java.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">An interface is used to achieve <b>multiple inheritance</b> in Java (a class may implement several interfaces, though it can extend only one class).</div><div class="sm">[1]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Interfaces give multiple inheritance / full abstraction (any one use).</div></div><div class="mnote"><span class="lab">Marking note</span> Also accepted: to achieve abstraction; to specify a contract that implementing classes must follow; to achieve loose coupling.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>An interface holds abstract methods (and constants); a class that <b>implements</b> it must define all of them.</li><li>Uses: multiple inheritance of type, full abstraction, a common contract for unrelated classes, loose coupling.</li></ul></aside></div></section><section class="slide" id="q5" data-i="5" data-sec="FIVE-MARK QUESTIONS (5)"><div class="crumb"><span>FIVE-MARK QUESTIONS (5)</span><span class="src">ISC 2026 Computer Science Paper 1 (868A), Q10</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 10 &middot; Board 2026</span><span class="chip">[5]</span></div><div class="qbody">A superclass <b>Hotel</b> has been defined to store the details of a hotel. Define a subclass <b>Customer</b> to calculate the total bill for a customer as per the following criteria: room type Executive &ndash; additional amount 10% of room rent; Suite &ndash; 20% of room rent.<div class="tw"><table class="plain spec"><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Class Hotel: data members</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">hname</td><td style="border:none">: to store hotel name</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">roomrent</td><td style="border:none">: to store the rent per day</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">Hotel(&hellip;)</td><td style="border:none">: parameterised constructor to assign values to its data members</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void show( )</td><td style="border:none">: to display hotel details</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Class Customer: data members</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">cname</td><td style="border:none">: customer name</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">days</td><td style="border:none">: number of days of stay</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">type</td><td style="border:none">: room type</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">surcharge</td><td style="border:none">: additional amount</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">amt</td><td style="border:none">: total amount</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">Customer(&hellip;)</td><td style="border:none">: parameterised constructor to assign values to data members of both the classes</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void compute( )</td><td style="border:none">: to calculate the surcharge based on the room type; also the total amount = (room rent + surcharge) &times; days</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void show( )</td><td style="border:none">: to display hotel and customer details</td></tr></table></div>Assume that the superclass Hotel has been defined. Using the concept of <b>Inheritance</b>, specify the class Customer, giving details of constructor(&hellip;), void compute( ) and void show( ). The super class, main function and algorithm need NOT be written. [5]</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Header <code>class Customer extends Hotel</code> and the data members of Customer</div><div class="sm">[½]</div></li><li class="st"><div class="sx">Constructor: <code>super(hn, rr)</code> as the <i>first</i> statement to initialise hname and roomrent; then assign cname, days, type</div><div class="sm">[1½]</div></li><li class="st"><div class="sx"><code>compute()</code>: surcharge 10% of roomrent for Executive, 20% for Suite (else 0)</div><div class="sm">[1]</div></li><li class="st"><div class="sx">Total <code>amt = (roomrent + surcharge) * days</code></div><div class="sm">[½]</div></li><li class="st"><div class="sx"><code>show()</code>: <code>super.show()</code> for the hotel details, then the customer details</div><div class="sm">[1]</div></li><li class="st"><div class="sx"><div style="border:1.5px dashed #8a93a3;border-radius:6px;padding:.4em .7em;margin:.5em 0"><div class="muted" style="font-size:.82em"><i>Superclass as the paper assumes it &ndash; not part of the answer</i></div><pre class="code java">class Hotel
+{
+    String hname;
+    double roomrent;
+    Hotel(String hn, double rr)
+    {
+        hname = hn;
+        roomrent = rr;
+    }
+    void show()
+    {
+        System.out.println(&quot;Hotel: &quot; + hname + &quot;  Room rent per day: &quot; + roomrent);
+    }
+}</pre></div><b>Answer</b> (the superclass is included only to run it: Suite for 3 days at 1000 gives surcharge 200, amount 3600; Executive for 2 days gives 2200; other room 1000):<pre class="code java">class Customer extends Hotel
+{
+    String cname, type;
+    int days;
+    double surcharge, amt;
+
+    Customer(String hn, double rr, String cn, int d, String t)
+    {
+        super(hn, rr);                      // initialise the data members of Hotel
+        cname = cn;
+        days = d;
+        type = t;
+        surcharge = 0;
+        amt = 0;
+    }
+
+    void compute()
+    {
+        if (type.equalsIgnoreCase(&quot;Executive&quot;))
+            surcharge = 0.10 * roomrent;
+        else if (type.equalsIgnoreCase(&quot;Suite&quot;))
+            surcharge = 0.20 * roomrent;
+        else
+            surcharge = 0;
+        amt = (roomrent + surcharge) * days;
+    }
+
+    void show()
+    {
+        super.show();                       // hotel details
+        System.out.println(&quot;Customer: &quot; + cname + &quot;  Room type: &quot; + type + &quot;  Days: &quot; + days);
+        System.out.println(&quot;Surcharge: &quot; + surcharge + &quot;  Total amount: &quot; + amt);
+    }
+}</pre></div><div class="sm">[½]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>class Customer extends Hotel (above); amt = (roomrent + surcharge) &times; days.</div></div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Inheritance: <code>extends</code> inherits non-private members; the subclass constructor must call <code>super(...)</code> first, to initialise the superclass members.</li><li><code>super.show()</code> calls the superclass version of an overridden method (method overriding: same name and signature in the subclass).</li><li>String comparison uses equals() / equalsIgnoreCase(), never ==.</li><li>The superclass members are accessed directly only if they are not private (here they are default access and in the same package).</li></ul></aside></div></section><section class="slide" id="q6" data-i="6" data-sec="FIVE-MARK QUESTIONS (5)"><div class="crumb"><span>FIVE-MARK QUESTIONS (5)</span><span class="src">ISC 2025 Improvement Computer Science Paper 1 (868A), Q10</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 10 &middot; Board 2025 Imp.</span><span class="chip">[5]</span></div><div class="qbody">A superclass Train has been defined to store the details of a train for booking tickets. Define a subclass Booking to compute the total cost of the tickets based on the number of passengers and any discount for group bookings.<div class="tw"><table class="plain spec"><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">Class name</td><td style="border:none">: Train</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Data members / instance variables</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">trainName</td><td style="border:none">: to store the name of the train</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">trainNumber</td><td style="border:none">: to store the train number</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">ticketPrice</td><td style="border:none">: to store the price of a single ticket in decimal</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Methods / member functions</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">Train(&hellip;)</td><td style="border:none">: parameterised constructor to assign values to data members</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void displayDetails()</td><td style="border:none">: to display the train details</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">Class name</td><td style="border:none">: Booking</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Data members / instance variables</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">numPassengers</td><td style="border:none">: to store the number of passengers for booking</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">groupDiscount</td><td style="border:none">: to store the group discount percentage</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">totalCost</td><td style="border:none">: to store the total cost after applying the group discount in decimal</td></tr><tr><td colspan="2" style="border:none;padding-top:.35em"><b>Methods / member functions</b></td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">Booking(&hellip;)</td><td style="border:none">: parameterised constructor to assign values to data members of both the classes</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void calCost()</td><td style="border:none">: to calculate the cost as per the formula (ticket price &times; numPassengers), apply a group discount of 10% if numPassengers is greater than 5 and calculate the total cost with discount, if any</td></tr><tr><td style="border:none;white-space:nowrap;padding-right:1.2em">void displayDetails()</td><td style="border:none">: to display the train details, number of passengers, group discount and the total cost with discount, if any</td></tr></table></div>Assume that the superclass Train has been defined. Using the concept of Inheritance, specify the class Booking giving the details of the constructor(&hellip;), void calCost() and void displayDetails(). The superclass, main function and algorithm need NOT be written.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx">Class header with <code>extends Train</code>; data members numPassengers, groupDiscount, totalCost</div><div class="sm">[1]</div></li><li class="st"><div class="sx">Constructor: <code>super(name, num, price)</code> then the Booking members</div><div class="sm">[1½]</div></li><li class="st"><div class="sx">calCost(): ticketPrice &times; numPassengers, 10% discount if numPassengers &gt; 5</div><div class="sm">[1½]</div></li><li class="st"><div class="sx">displayDetails(): <code>super.displayDetails()</code> and the other values</div><div class="sm">[1]</div></li><li class="st nm"><div class="sx"><div style="border:1.5px dashed #8a93a3;border-radius:6px;padding:.4em .7em;margin:.5em 0"><div class="muted" style="font-size:.8em">Superclass Train as assumed (members protected so that Booking can use ticketPrice) &mdash; <b>not part of your answer</b></div><pre class="code java">class Train
+{
+    protected String trainName;
+    protected int trainNumber;
+    protected double ticketPrice;
+
+    Train(String name, int num, double price)
+    {
+        trainName = name;
+        trainNumber = num;
+        ticketPrice = price;
+    }
+
+    void displayDetails()
+    {
+        System.out.println(&quot;Train : &quot; + trainName + &quot;  No. &quot; + trainNumber + &quot;  Ticket : &quot; + ticketPrice);
+    }
+}</pre></div></div><div class="sm"></div></li><li class="st nm"><div class="sx"><pre class="code java">class Booking extends Train
+{
+    int numPassengers;
+    double groupDiscount;                    // discount percentage
+    double totalCost;
+
+    Booking(String name, int num, double price, int pass)
+    {
+        super(name, num, price);             // data members of the superclass
+        numPassengers = pass;
+        groupDiscount = 0.0;
+        totalCost = 0.0;
+    }
+
+    void calCost()
+    {
+        totalCost = ticketPrice * numPassengers;
+        if (numPassengers &gt; 5)               // group booking
+        {
+            groupDiscount = 10.0;
+            totalCost = totalCost - totalCost * groupDiscount / 100;
+        }
+    }
+
+    void displayDetails()
+    {
+        super.displayDetails();              // train details
+        System.out.println(&quot;Passengers : &quot; + numPassengers);
+        System.out.println(&quot;Group discount : &quot; + groupDiscount + &quot; %&quot;);
+        System.out.println(&quot;Total cost : &quot; + totalCost);
+    }
+}</pre></div><div class="sm"></div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Class Booking extends Train, as above. Example: 6 passengers at 1000.0 give total cost 5400.0 after the 10% group discount</div></div><div class="slip"><span class="lab">Common slip</span> Declaring ticketPrice again in Booking (a second, hidden variable) instead of using the inherited one.</div><div class="mnote"><span class="lab">Marking note</span> The superclass is not part of the answer; it is shown only because the answer is unreadable without its members (assumed protected; private members would need accessor methods). Tested: 4 passengers, 1500.0 gives 6000.0; 6 passengers, 1000.0 gives 5400.0. Accept a constructor with five parameters including the discount.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Inheritance: <code>class Sub extends Super</code>; the subclass constructor calls <code>super(...)</code> first to initialise the inherited members.</li><li><code>super.displayDetails()</code> reuses the superclass method inside the overriding method.</li><li>The discount: totalCost = price &times; n &minus; price &times; n &times; 10/100 when n &gt; 5.</li></ul></aside></div></section><section class="slide" id="q7" data-i="7" data-sec="FIVE-MARK QUESTIONS (5)"><div class="crumb"><span>FIVE-MARK QUESTIONS (5)</span><span class="src">ISC 2025 Computer Science Paper 1 (868A), Q10</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 10 &middot; Board 2025</span><span class="chip">[5]</span></div><div class="qbody">A superclass <b>Flight</b> has been defined to store the details of a flight. Define a subclass <b>Passenger</b> to calculate the fare for a passenger.<br>Flight: <code>flightno</code>, <code>dep_time</code>, <code>arr_time</code> (strings), <code>basefare</code> (decimal); <code>Flight(...)</code> parameterised constructor; <code>void show()</code> display the flight details.<br>Passenger: <code>id</code>, <code>name</code>, <code>tax</code>, <code>tot</code> (decimal); <code>Passenger(...)</code> parameterised constructor to assign values to the data members of both classes; <code>void cal()</code> calculate the tax as 5% of base fare and total amount (base fare + tax); <code>void show()</code> display the flight details along with the passenger details and total amount to be paid.<br>Assume that the superclass Flight has been defined. Using the concepts of Inheritance, specify the class Passenger giving the details of constructor(...), void cal() and void show(). The super class, main function and algorithm need NOT be written.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st"><div class="sx"><b>Class header and constructor:</b> <code>extends Flight</code>; the constructor takes the values of both classes and passes the flight values to <code>super(...)</code>, which must be its first statement<pre class="code java">class Passenger extends Flight
+{
+    String id, name;
+    double tax, tot;
+    Passenger(String f, String d, String a, double b, String i, String nm)
+    {
+        super(f, d, a, b);                 // the Flight part is set up by the superclass
+        id = i;
+        name = nm;
+        tax = 0.0;
+        tot = 0.0;
+    }
+    ...
+}</pre></div><div class="sm">[2]</div></li><li class="st"><div class="sx"><b>cal()</b>: tax is 5% of the inherited basefare, tot = basefare + tax<pre class="code java">void cal()
+{
+    tax = 0.05 * basefare;             // 5% of the base fare
+    tot = basefare + tax;
+}</pre></div><div class="sm">[1½]</div></li><li class="st"><div class="sx"><b>show()</b>: <code>super.show()</code> prints the flight details, then the passenger details and the total<pre class="code java">void show()
+{
+    super.show();                      // the flight details
+    System.out.println(&quot;Passenger ID: &quot; + id + &quot;  Name: &quot; + name);
+    System.out.println(&quot;Tax: &quot; + tax + &quot;  Total amount: &quot; + tot);
+}</pre></div><div class="sm">[1½]</div></li></ol><div class="solfig"><div class="figwrap" style="text-align:center"><figure style="margin:.3em auto;display:inline-block;width:450px;max-width:100%"><svg style="width:100%;height:auto;color:#000;font-family:'Liberation Serif',serif" viewBox="0 0 300 130" preserveAspectRatio="xMidYMid meet" role="img" xmlns="http://www.w3.org/2000/svg"><rect x="70" y="8" width="160" height="40" rx="0" stroke="currentColor" stroke-width="1.4" fill="#fff"/><text x="150" y="24" font-size="11" text-anchor="middle" fill="currentColor" class="" font-weight="700">Flight</text><text x="150" y="40" font-size="7.5" text-anchor="middle" fill="currentColor" class="">flightno, dep_time, arr_time, basefare</text><path d="M150 86L150 49" stroke="currentColor" stroke-width="1.4" fill="none" class=""/><path d="M150 49L151.386 52.1045" stroke="currentColor" stroke-width="1.4" fill="none" class=""/><path d="M150 49L148.614 52.1045" stroke="currentColor" stroke-width="1.4" fill="none" class=""/><rect x="70" y="88" width="160" height="38" rx="0" stroke="currentColor" stroke-width="1.4" fill="#fff"/><text x="150" y="103" font-size="11" text-anchor="middle" fill="currentColor" class="" font-weight="700">Passenger</text><text x="150" y="118" font-size="8" text-anchor="middle" fill="currentColor" class="">id, name, tax, tot</text><text x="160" y="72" font-size="8.5" text-anchor="start" fill="currentColor" class="">extends</text></svg><figcaption>Passenger inherits the Flight data and show()</figcaption></figure></div></div><div class="ansbox"><span class="lab">Answer</span><div>Class Passenger extends Flight as given; for base fare 5000.0 the tax is 250.0 and the total 5250.0.</div></div><div class="mnote"><span class="lab">Marking note</span> The superclass is not written in the answer; it is shown here only to run the program. Flight&rsquo;s data members are assumed to be non-private (default or protected), as in the usual ISC style. The type of id (String here) is not fixed by the question; int is equally acceptable.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Inheritance: <code>class Sub extends Super</code>; the constructor of the subclass calls <code>super(...)</code> first to initialise the inherited data.</li><li><code>super.show()</code> calls the superclass version of an overridden method.</li><li>The subclass can use the inherited non-private members (basefare) directly.</li></ul></aside></div></section><section class="slide" id="q8" data-i="8" data-sec="FIVE-MARK QUESTIONS (5)"><div class="crumb"><span>FIVE-MARK QUESTIONS (5)</span><span class="src">ISC Specimen 2025 Computer Science Paper 1, Q10</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 10 &middot; Specimen 2025</span><span class="chip">[5]</span></div><div class="qbody">A library issues books on rental basis at a charge of 2% of the cost price of the book per day. A book can be retained for 7 days without any fine; if returned after 7 days a fine is charged for the excess days: 1 to 5 days Rs 2.00 per day, 6 to 10 days Rs 3.00 per day, above 10 days Rs 5.00 per day. Super class <b>Library</b> (name, author, p = price; <code>Library(...)</code>; <code>void show()</code>) is defined. Define a sub class <b>Compute</b>: d (days taken), f (fine, double); <code>Compute(...)</code> parameterised constructor assigning the data members of both classes; <code>void fine()</code> calculates the fine; <code>void show()</code> displays the book details with the days, fine and total amount = (2% of price &times; total days) + fine. The super class, main() and algorithm need NOT be written.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st nm"><div class="sx">Complete answer:<pre class="code java">class Compute extends Library
+{
+    int d;
+    double f;
+    Compute(String n, String a, double pr, int days)
+    {
+        super(n, a, pr);
+        d = days;
+        f = 0.0;
+    }
+    void fine()
+    {
+        int ex = d - 7;                 // excess days
+        if (ex &lt;= 0)
+            f = 0;
+        else if (ex &lt;= 5)
+            f = ex * 2.00;
+        else if (ex &lt;= 10)
+            f = ex * 3.00;
+        else
+            f = ex * 5.00;
+    }
+    void show()
+    {
+        super.show();
+        double total = 0.02 * p * d + f;
+        System.out.println(&quot;Days = &quot; + d + &quot;  Fine = &quot; + f + &quot;  Total amount = &quot; + total);
+    }
+}</pre></div><div class="sm"></div></li><li class="st"><div class="sx">Class header <code>Compute extends Library</code> and data members d, f</div><div class="sm">[1]</div></li><li class="st"><div class="sx">Constructor: <code>super(n, a, pr)</code> as the first statement, then d = days, f = 0</div><div class="sm">[1]</div></li><li class="st"><div class="sx">fine(): excess days = d &minus; 7; 0 if not positive; 2 per day if 1 to 5; 3 per day if 6 to 10; 5 per day above 10 (the rate by band, applied to all the excess days)</div><div class="sm">[2]</div></li><li class="st"><div class="sx">show(): <code>super.show()</code>, then days, fine and total = 0.02 &times; p &times; d + f</div><div class="sm">[1]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Total amount = 0.02 &times; p &times; d + f; e.g. p = 500, d = 15: excess 8 days at Rs 3 = Rs 24; total = 150 + 24 = <b>Rs 174</b>.</div></div><div class="slip"><span class="lab">Common slip</span> Computing the fine from d instead of d &minus; 7, or leaving f negative when d &lt; 7.</div><div class="mnote"><span class="lab">Marking note</span> <b>The CISCE key omits the no-fine case:</b> for d &le; 7 its final <code>else</code> gives f = (d &minus; 7) &times; 5, a negative fine. The version here sets f = 0. The key also reads the rule as a flat rate by band applied to all excess days (as done here); a cumulative slab reading is not indicated by the question. Library was supplied with p accessible to the subclass (protected or package access) for the run: d = 6 gives fine 0.0, total 60.0; d = 10 gives 6.0 and 106.0; d = 15 gives 24.0 and 174.0; d = 20 gives 65.0 and 265.0.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Inheritance: <code>extends</code>; a subclass constructor calls <code>super(...)</code> first to initialise the inherited members; <code>super.show()</code> reuses the superclass display.</li><li>Slab logic uses if &hellip; else if on the number of <i>excess</i> days, not the total days; test the "no fine" case first.</li><li>Fine and total are doubles: write 0.02 (2%) and avoid integer division.</li></ul></aside></div></section><section class="slide" id="q9" data-i="9" data-sec="FIVE-MARK QUESTIONS (5)"><div class="crumb"><span>FIVE-MARK QUESTIONS (5)</span><span class="src">ISC 2024 Computer Science Paper 1 (868A), Q10</span></div><div class="grid"><div class="main"><article class="qcard"><div class="qhead"><span class="qno">Question 10 &middot; Board 2024</span><span class="chip">[5]</span></div><div class="qbody"><div class="chnote">Also draws on: subclass of EmpSal, super() and overriding.</div>A super class EmpSal has been defined to store the details of an employee. Define a subclass Overtime to compute the total salary of the employee, after adding the overtime amount: if hours are more than 40, &#8377; 5000 is added; if hours are between 30 and 40 (both inclusive), &#8377; 3000 is added; if hours are less than 30 the salary remains unchanged.<div class="tw"><table class=""><tbody><tr><td>Class name</td><td>: EmpSal</td></tr><tr><td>empnum</td><td>: to store the name of the employee</td></tr><tr><td>empcode</td><td>: integer to store the employee code</td></tr><tr><td>salary</td><td>: to store the salary of the employee in decimal</td></tr><tr><td>EmpSal(...)</td><td>: parameterised constructor to assign values to data members</td></tr><tr><td>void show( )</td><td>: to display the details of the employee</td></tr></tbody></table></div><div class="tw"><table class=""><tbody><tr><td>Class name</td><td>: Overtime</td></tr><tr><td>hours</td><td>: integer to store overtime in hours</td></tr><tr><td>totsal</td><td>: to store the total salary in decimal</td></tr><tr><td>Overtime(...)</td><td>: parameterised constructor to assign values to data members of both the classes</td></tr><tr><td>void calSal( )</td><td>: calculates the total salary by adding the overtime amount to salary as per the criteria</td></tr><tr><td>void show( )</td><td>: to display the employee details along with the total salary (salary + overtime amount)</td></tr></tbody></table></div>Using the concept of inheritance, specify the class Overtime giving the details of the constructor(...), void calSal( ) and void show( ). The super class, main function and algorithm need NOT be written.</div></article><div class="actions"><button class="sbtn" type="button">Show solution</button><button class="dbtn" type="button">Mark done</button></div><div class="sol"><ol class="steps2"><li class="st nm"><div class="sx"><b>Given (superclass &ndash; NOT part of your answer):</b><div style="font-weight:400"><pre class="code java">class EmpSal
+{
+    String empnum; int empcode; double salary;
+    EmpSal(String n, int c, double s)
+    {
+        empnum = n; empcode = c; salary = s;
+    }
+    void show()
+    {
+        System.out.println(&quot;Name: &quot; + empnum + &quot;  Code: &quot; + empcode + &quot;  Salary: &quot; + salary);
+    }
+}</pre></div></div><div class="sm"></div></li><li class="st nm"><div class="sx"><b>Class header and data members</b><div style="font-weight:400"><pre class="code java">class Overtime extends EmpSal
+{
+    int hours;          // overtime hours
+    double totsal;      // salary + overtime amount
+    // ... methods below
+}</pre></div></div><div class="sm"></div></li><li class="st"><div class="sx"><b>Constructor</b> &ndash; super(&hellip;) call (1), own member assigned (1)<pre class="code java">    Overtime(String n, int c, double s, int h)
+    {
+        super(n, c, s);          // assigns the superclass members
+        hours = h;
+        totsal = 0;
+    }</pre></div><div class="sm">[2]</div></li><li class="st"><div class="sx"><b>calSal()</b> &ndash; more than 40 (1), 30 to 40 inclusive, else unchanged (1)<pre class="code java">    void calSal()
+    {
+        if (hours &gt; 40)
+            totsal = salary + 5000;
+        else if (hours &gt;= 30)            // 30 to 40 inclusive
+            totsal = salary + 3000;
+        else
+            totsal = salary;
+    }</pre></div><div class="sm">[2]</div></li><li class="st"><div class="sx"><b>show()</b> &ndash; calls super.show() and prints the total (1)<pre class="code java">    void show()
+    {
+        super.show();                    // employee details
+        System.out.println(&quot;Total salary: &quot; + totsal);
+    }</pre></div><div class="sm">[1]</div></li></ol><div class="ansbox"><span class="lab">Answer</span><div>Class Overtime extends EmpSal as above (hours 45 &rarr; 25000, 40 &rarr; 23000, 30 &rarr; 23000, 29 &rarr; 20000 for a salary of 20000)</div></div><div class="slip"><span class="lab">Common slip</span> Using hours &gt; 30 (which wrongly pays nothing at exactly 30) or forgetting super(...) when the superclass has no default constructor.</div><div class="mnote"><span class="lab">Marking note</span> The superclass shown first is only test scaffolding; it is not part of the answer. The question gives no parameter types, so String / int / double / int are assumed from the member descriptions.</div></div></div><aside class="recall"><h3>Concepts to recall</h3><ul><li>Inheritance: <code>class Sub extends Super</code>; the subclass constructor starts with <code>super(args)</code> to initialise the inherited members.</li><li><code>super.show()</code> calls the superclass method that the subclass overrides; the inherited non-private members (salary) are used directly.</li><li>Range test: hours &gt; 40; else hours &gt;= 30 (covers 30 to 40 inclusive); else no overtime.</li></ul></aside></div></section></div>
+<div id="bar"><div class="in">
+<button id="prevb" type="button">&larr; Prev</button><span id="counter">0 / 9</span>
+<button id="nextb" type="button">Next &rarr;</button>
+<select id="jump" aria-label="Jump to question"><option value="0">Cover</option><optgroup label="ONE-MARK QUESTIONS (4)"><option value="1">Q1(vi) &middot; Board 2026 &middot; 1 mk</option><option value="2">Q1(vi) &middot; Board 2025 Imp. &middot; 1 mk</option><option value="3">Q1(viii) &middot; Board 2025 Imp. &middot; 1 mk</option><option value="4">Q1(vii) &middot; Board 2024 &middot; 1 mk</option></optgroup><optgroup label="FIVE-MARK QUESTIONS (5)"><option value="5">Q10 &middot; Board 2026 &middot; 5 mk</option><option value="6">Q10 &middot; Board 2025 Imp. &middot; 5 mk</option><option value="7">Q10 &middot; Board 2025 &middot; 5 mk</option><option value="8">Q10 &middot; Specimen 2025 &middot; 5 mk</option><option value="9">Q10 &middot; Board 2024 &middot; 5 mk</option></optgroup></select>
+<div id="prog"><i></i></div>
+<button id="revealAll" type="button">Reveal all</button>
+<span id="tally"></span>
+<a href="index.html" style="font-size:.82rem;color:var(--accent)">All chapters</a>
+</div></div>
+<script>
+(function(){
+  var KEY='isc-pyq-computers-chapter12-v1';
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var N=slides.length-1, cur=0, done={};
+  try{ done=JSON.parse(localStorage.getItem(KEY+'-done')||'{}'); }catch(e){}
+  var counter=document.getElementById('counter'), jump=document.getElementById('jump'),
+      prog=document.querySelector('#prog i'), tally=document.getElementById('tally');
+  function save(){ try{ localStorage.setItem(KEY+'-pos',String(cur)); localStorage.setItem(KEY+'-done',JSON.stringify(done)); }catch(e){} }
+  function doneCount(){ return Object.keys(done).filter(function(k){return done[k];}).length; }
+  function render(){
+    slides.forEach(function(s,i){ s.classList.toggle('on',i===cur); s.classList.toggle('done',!!done[i]); });
+    counter.textContent=cur+' / '+N; jump.value=String(cur);
+    prog.style.width=(100*cur/N)+'%';
+    tally.textContent='done '+doneCount()+'/'+N;
+    var s=slides[cur].querySelector('.sbtn');
+    if(s) s.textContent=slides[cur].classList.contains('shown')?'Hide solution':'Show solution';
+    try{ history.replaceState(null,'','#p'+cur); }catch(e){}
+    save(); window.scrollTo(0,0);
+  }
+  function go(i){ cur=Math.max(0,Math.min(N,i)); render(); }
+  function toggleSol(){ var s=slides[cur]; if(cur>0){ s.classList.toggle('shown'); render2(); } }
+  function render2(){ var s=slides[cur].querySelector('.sbtn');
+    if(s) s.textContent=slides[cur].classList.contains('shown')?'Hide solution':'Show solution'; }
+  function toggleDone(){ if(cur>0){ done[cur]=!done[cur]; render2(); slides[cur].classList.toggle('done',!!done[cur]);
+    tally.textContent='done '+doneCount()+'/'+N; save(); } }
+  document.getElementById('prevb').onclick=function(){go(cur-1)};
+  document.getElementById('nextb').onclick=function(){go(cur+1)};
+  jump.onchange=function(){go(parseInt(jump.value,10))};
+  document.getElementById('revealAll').onclick=function(){
+    var on=document.body.classList.toggle('allsol');
+    this.textContent=on?'Hide all':'Reveal all'; };
+  slides.forEach(function(s,i){
+    var b=s.querySelector('.sbtn'); if(b) b.onclick=toggleSol;
+    var d=s.querySelector('.dbtn'); if(d) d.onclick=toggleDone; });
+  document.addEventListener('keydown',function(e){
+    var t=e.target&&e.target.tagName; if(t==='SELECT'||t==='INPUT'||e.ctrlKey||e.metaKey||e.altKey) return;
+    var k=e.key;
+    if(k==='ArrowRight'||k==='PageDown'||k===' '){ e.preventDefault(); go(cur+1); }
+    else if(k==='ArrowLeft'||k==='PageUp'){ e.preventDefault(); go(cur-1); }
+    else if(k==='Home'){ go(0); } else if(k==='End'){ go(N); }
+    else if(k==='s'||k==='S'){ toggleSol(); } else if(k==='d'||k==='D'){ toggleDone(); }
+  });
+  var x0=null,y0=null;
+  document.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  document.addEventListener('touchend',function(e){ if(x0===null) return;
+    var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
+    if(Math.abs(dx)>70 && Math.abs(dy)<50) go(cur+(dx<0?1:-1)); },{passive:true});
+  function fromHash(){ var m=/^#p(\d+)$/.exec(location.hash||''); return m?parseInt(m[1],10):-1; }
+  window.addEventListener('hashchange',function(){ var i=fromHash(); if(i>=0&&i<=N&&i!==cur) go(i); });
+  var h=fromHash();
+  if(h>=0&&h<=N) cur=h; else { try{ var v=parseInt(localStorage.getItem(KEY+'-pos'),10); if(v>=0&&v<=N) cur=v; }catch(e){} }
+  render();
+  /* Printing: CSS shows every slide with every solution. Do NOT add .on here --
+     it restarts animations from opacity:0 and prints blank pages. */
+})();
+</script></body></html>
